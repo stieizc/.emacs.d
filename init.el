@@ -1,5 +1,5 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ;("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
@@ -8,5 +8,6 @@
     (lambda ()
       (mapc 'require
 	    '(init-theme
-	      init-keybindings
+	      init-key-bindings
+	      init-mode-hooks
 	      init-evil))))
