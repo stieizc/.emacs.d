@@ -8,4 +8,5 @@
     (lambda ()
       (mapc 'require
 	    '(init-theme
+	      init-keybindings
 	      init-evil))))
