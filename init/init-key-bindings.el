@@ -6,8 +6,7 @@
 ;;; Code:
 
 (global-set-key (kbd "<f12>") 'magit-status)
-(global-set-key (kbd "M-x") 'helm-M-x)
-;(global-set-key (kbd "<tab>") 'company-complete)
+;(global-set-key (kbd "M-x") 'helm-M-x)
 
 (provide 'init-key-bindings)
 

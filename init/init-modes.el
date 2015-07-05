@@ -12,6 +12,7 @@
 	  'company-jedi)))
 (global-company-mode)
 (global-flycheck-mode)
+(helm-mode 1)
 
 (provide 'init-modes)
 
