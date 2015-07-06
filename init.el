@@ -17,9 +17,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
- '(menu-bar-mode nil)
- '(tool-bar-mode nil))
+    ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default))))
 
 (add-hook 'after-init-hook
     (lambda ()

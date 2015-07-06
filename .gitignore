@@ -1,5 +1,8 @@
+*~
+*.dat
+
 auto-save-list
 elpa
-*~
 .python-environments/
-*.dat
+image-dired/
+/projectile-bookmarks.eld
