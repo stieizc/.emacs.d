@@ -12,7 +12,10 @@
  "w" 'save-buffer
  "q" 'save-buffers-kill-terminal
  "ee" (lambda () (interactive) (find-file "~/.emacs.d"))
- "ek" 'kill-emacs)
+ "ek" (lambda () (interactive)
+	(progn
+	  (save-buffers-kill-terminal)
+	  (kill-emacs))))
 
 (define-key evil-insert-state-map (kbd "TAB") 'company-complete)
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-command-map)
