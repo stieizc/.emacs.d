@@ -6,3 +6,4 @@ elpa
 .python-environments/
 image-dired/
 /projectile-bookmarks.eld
+/tramp
