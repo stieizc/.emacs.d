@@ -17,7 +17,12 @@
 	  (save-buffers-kill-terminal)
 	  (kill-emacs))))
 
-(define-key evil-insert-state-map (kbd "TAB") 'company-complete)
+(define-key evil-insert-state-map (kbd "TAB")
+  (lambda() (interactive)
+    (if (or (bolp) (string-match "[\s-]" (string (char-before))))
+	(indent-according-to-mode)
+      (company-complete-common))))
+
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-command-map)
 
 (provide 'init-evil)
