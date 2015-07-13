@@ -5,6 +5,8 @@
 
 ;;; Code:
 
+(setq-default fill-column 72)
+
 ;; Python
 (add-hook
  'python-mode-hook
@@ -15,6 +17,9 @@
 
 ;; CoffeeScript Mode
 (custom-set-variables '(coffee-tab-width 2))
+
+;; Apiary
+(add-to-list 'auto-mode-alist '("\\.apib$" . markdown-mode))
 
 ;; Completion
 (global-company-mode)
