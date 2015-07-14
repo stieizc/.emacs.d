@@ -22,6 +22,18 @@
 ;; Apiary
 (add-to-list 'auto-mode-alist '("\\.apib$" . markdown-mode))
 
+;; Markdown
+(add-hook 'markdown-mode-hook 'outline-evil-keys)
+
+;; Outline
+(defun outline-evil-keys()
+  (progn
+    (define-key evil-normal-state-map (kbd "C-n") 'outline-next-visible-heading)
+    (define-key evil-normal-state-map (kbd "C-p") 'outline-previous-visible-heading)
+    (define-key evil-normal-state-map (kbd "C-f") 'outline-forward-same-level)
+    (define-key evil-normal-state-map (kbd "C-b") 'outline-backward-same-level)
+    (define-key evil-normal-state-map (kbd "C-u") 'outline-up-heading)))
+
 ;; Completion
 (global-company-mode)
 
