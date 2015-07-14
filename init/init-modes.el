@@ -6,6 +6,7 @@
 ;;; Code:
 
 (setq-default fill-column 72)
+(setq-default indent-tabs-mode nil)
 
 ;; Python
 (add-hook
