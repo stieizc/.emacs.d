@@ -12,9 +12,19 @@
 (add-hook
  'python-mode-hook
  (lambda ()
-   (add-to-list
-    (make-local-variable 'company-backends)
-    'company-jedi)))
+   (progn
+     (add-to-list
+      (make-local-variable 'company-backends)
+      'company-jedi)
+     (setq fill-column 79)
+     (hack-local-variables)
+     (when (boundp 'project-venv-name)
+       (venv-workon project-venv-name))
+     (venv-initialize-eshell)
+     )))
+
+;; JS
+(setq js-indent-level 2)
 
 ;; CoffeeScript Mode
 (custom-set-variables '(coffee-tab-width 2))

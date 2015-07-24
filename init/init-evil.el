@@ -6,6 +6,8 @@
 ;;; Code:
 
 (global-evil-leader-mode)
+(custom-set-variables
+ '(evil-auto-indent nil))
 (evil-mode 1)
 
 (evil-leader/set-key
