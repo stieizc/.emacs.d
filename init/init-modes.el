@@ -25,6 +25,8 @@
 
 ;; JS
 (setq js-indent-level 2)
+(setq inferior-js-program-command "node --interactive")
+(setenv "NODE_NO_READLINE" "1")
 
 ;; CoffeeScript Mode
 (custom-set-variables '(coffee-tab-width 2))
@@ -51,6 +53,9 @@
 (global-flycheck-mode)
 
 ;; Helm
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 (helm-mode 1)
 (helm-autoresize-mode 1)
 
