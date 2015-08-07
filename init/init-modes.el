@@ -13,25 +13,30 @@
  'python-mode-hook
  (lambda ()
    (progn
+     (add-hook 'hack-local-variables-hook
+               (lambda ()
+                 (when (boundp 'project-venv-name)
+                   (venv-workon project-venv-name))))
      (add-to-list
       (make-local-variable 'company-backends)
       'company-jedi)
      (setq fill-column 79)
-     (hack-local-variables)
-     (when (boundp 'project-venv-name)
-       (venv-workon project-venv-name))
-     (venv-initialize-eshell)
      )))
 
 ;; JS
 (setq js-indent-level 2)
 (setq inferior-js-program-command "node --interactive")
 (setenv "NODE_NO_READLINE" "1")
+(add-hook
+ 'js-mode-hook
+ (lambda ()
+   (progn
+     (tern-mode t))))
 
 ;; CoffeeScript Mode
 (custom-set-variables '(coffee-tab-width 2))
 
-;; Apiary
+;; ApiarY
 (add-to-list 'auto-mode-alist '("\\.apib$" . markdown-mode))
 
 ;; Markdown
@@ -48,6 +53,7 @@
 
 ;; Completion
 (global-company-mode)
+(add-to-list 'company-backends 'company-tern)
 
 ;; Flycheck
 (global-flycheck-mode)
@@ -60,6 +66,7 @@
 (helm-autoresize-mode 1)
 
 ;; Projectile
+(setq projectile-keymap-prefix (kbd "C-p"))
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
@@ -68,6 +75,17 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 (electric-pair-mode)
+
+;; Line number
+(global-linum-mode t)
+
+;; Git Rebase
+(add-hook
+ 'git-rebase-mode-hook
+ (lambda ()
+   (progn
+     (message "FFFFFFFFFF!")
+     (evil-mode 0))))
 
 (provide 'init-modes)
 
