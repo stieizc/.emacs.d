@@ -5,6 +5,10 @@
 
 ;;; Code:
 
+;; Clipboard
+(setq x-select-enable-clipboard nil)
+
+;; Fill
 (setq-default fill-column 72)
 (setq-default indent-tabs-mode nil)
 
