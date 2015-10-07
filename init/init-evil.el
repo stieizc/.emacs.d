@@ -4,6 +4,7 @@
 ;;; All Evil Things here
 
 ;;; Code:
+(setq evil-want-C-u-scroll t)
 
 (global-evil-leader-mode)
 (custom-set-variables
@@ -12,6 +13,7 @@
 
 (evil-leader/set-key
  "w" 'save-buffer
+ ;;"p" (lambda () (interactive) (evil-paste-after 1 "*"))
  "q" 'save-buffers-kill-terminal
  "ee" (lambda () (interactive) (find-file "~/.emacs.d"))
  "ek" (lambda () (interactive)
