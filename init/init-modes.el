@@ -91,6 +91,9 @@
      (message "FFFFFFFFFF!")
      (evil-mode 0))))
 
+;; Org mode
+(eval-after-load "org" '(setcdr (assoc "\\.pdf\\'" org-file-apps) "pupdf %s"))
+
 (provide 'init-modes)
 
 ;;; init-modes.el ends here
