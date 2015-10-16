@@ -105,6 +105,10 @@
    ))
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
+;; Salt
+(add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("/Saltfile\\'" . yaml-mode))
+
 (provide 'init-modes)
 
 ;;; init-modes.el ends here
