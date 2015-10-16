@@ -29,6 +29,13 @@
 
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-command-map)
 
+(elscreen-start)
+
+(define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create) ;creat tab
+(define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill) ;kill tab
+(define-key evil-normal-state-map "gT" 'elscreen-previous) ;previous tab
+(define-key evil-normal-state-map "gt" 'elscreen-next) ;next tab
+
 (provide 'init-evil)
 
 ;;; init-evil.el ends here
