@@ -58,6 +58,8 @@
 ;; Completion
 (global-company-mode)
 (add-to-list 'company-backends 'company-tern)
+(custom-set-variables
+ '(company-dabbrev-downcase nil))
 
 ;; Flycheck
 (global-flycheck-mode)
