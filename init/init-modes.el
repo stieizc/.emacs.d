@@ -59,7 +59,8 @@
 (global-company-mode)
 (add-to-list 'company-backends 'company-tern)
 (custom-set-variables
- '(company-dabbrev-downcase nil))
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case nil))
 
 ;; Flycheck
 (global-flycheck-mode)
