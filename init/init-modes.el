@@ -112,6 +112,9 @@
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("/Saltfile\\'" . yaml-mode))
 
+;; Org Mode
+(custom-set-variables '(org-startup-truncated nil))
+
 (provide 'init-modes)
 
 ;;; init-modes.el ends here
