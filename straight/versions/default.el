@@ -1,0 +1,11 @@
+(("dash.el" . "26f065fd607cdf1a68e7987b9360accc2d0cbfb6")
+ ("elpa" . "3a0ecc21d5d5fc73d37ecd02adca1d0f79419757")
+ ("epkgs" . "588fcc849eb66ce73475cf4cd6a078063547bb21")
+ ("f.el" . "8191672377816a1975414cc1f116fd3b94b30bd0")
+ ("git.el" . "a3396a7027a7d986598c6a2d6d5599bac918f3da")
+ ("melpa" . "0696a12acba676015640de63fc6e011128bca71c")
+ ("org" . "0da44916220bfd2970adca4bb191181e295e70a6")
+ ("s.el" . "03410e6a7a2b11e47e1fea3b7d9899c7df26435e")
+ ("straight.el" . "093154e96ff4bbf00ab487234225e8391d533934")
+ ("use-package" . "39a8b8812c2c9f6f0b299e6a04e504ef393694ce"))
+:saturn

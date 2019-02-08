@@ -4,18 +4,27 @@
 ;;; Initialization
 
 ;;; Code:
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ;("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+(message "Initializing emacs: %s" user-init-file)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
+(defun my:fullpath-current-file ()
+  (file-name-directory (or load-file-name buffer-file-name)))
 
-(add-hook 'after-init-hook
-    (lambda ()
-      (mapc 'require
-	    '(init-theme
-	      init-key-bindings
-	      init-modes
-	      init-evil))))
+(defun xah:fullpath-relative-to-current-file (@file-relative-path)
+  "Return the full path of *file-relative-path, relative to caller's file location.
+See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
+  (concat (my:fullpath-current-file) @file-relative-path))
+
+(defun my:load-config (@file-relative-path)
+  (load (concat user-emacs-directory @file-relative-path)))
+
+;; I know, I know. I'd like to have emacs accept custom files
+;; under different path than "~/.emacs.d"
+(setq user-emacs-directory (my:fullpath-current-file))
+
+(my:load-config "core")
+;; load org-mode settings as early as possible
+;; see link in org.el
+(my:load-config "org-straight")
+(my:load-config "lang")
 
 ;;; init.el ends here
