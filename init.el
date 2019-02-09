@@ -30,6 +30,7 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 ;; see link in org.el
 (my:load-config "org-straight")
 (my:load-config "basic-settings")
+(my:load-config "init-evil")
 (my:load-config "lang")
 
 ;;; init.el ends here
