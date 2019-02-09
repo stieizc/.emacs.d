@@ -6,6 +6,10 @@
 ;;; Code:
 (message "Initializing emacs: %s" user-init-file)
 
+(defvar my:debug-mode (or (getenv "DEBUG") init-file-debug)
+  "If non-nil, all config functions will be verbose. Set DEBUG=1 in the command
+line or use --debug-init to enable this.")
+
 (defun my:fullpath-current-file ()
   (file-name-directory (or load-file-name buffer-file-name)))
 

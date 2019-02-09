@@ -4,7 +4,15 @@
 
 ;;; Code:
 
+;; Borrow a lot from
 ;; https://framagit.org/steckerhalter/steckemacs.el/blob/master/steckemacs.el
+;; https://github.com/hlissner/doom-emacs
+;; https://github.com/syl20bnr/spacemacs/
+
+;;; - Performance
+(setq
+  idle-update-delay 2                    ; update ui less often
+  gc-cons-percentage 0.3)                ;increase garbage collection limit
 
 ;;; - Startup
 
@@ -12,8 +20,8 @@
 (setq
  inhibit-startup-message t
  load-prefer-newer t                    ;prefer newer .el instead of the .elc
- gc-cons-percentage 0.3                 ;increase garbage collection limit
  custom-file "/tmp/custom-file.el" ;don't pollute the init file and don't `load' the customs but keep them for reference...
+ debug-on-error (and (not noninteractive) my:debug-mode)
  initial-buffer-choice my:todo)
 
 ;;; - Autosave
@@ -56,12 +64,17 @@
  mark-ring-max 5000)                    ;truncate mark ring after 5000 entries
 
 ;;; - Encoding
-(setq
- locale-coding-system 'utf-8)           ;utf-8 is default
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
+
+;; UTF-8 as the default coding system
+(when (fboundp 'set-charset-priority)
+  (set-charset-priority 'unicode))
+(prefer-coding-system        'utf-8)
+(set-terminal-coding-system  'utf-8)
+(set-keyboard-coding-system  'utf-8)
+(set-selection-coding-system 'utf-8)
+(setq locale-coding-system   'utf-8)
+(setq-default buffer-file-coding-system 'utf-8)
 (set-language-environment "UTF-8")
-(prefer-coding-system 'utf-8)
 
 ;;; - Version control
 (setq
@@ -76,6 +89,15 @@
  switch-to-buffer-preserve-window-point t) ;this allows operating on the same buffer in diff. positions
 
 ;;; - Eye candy
+
+;; line-numbers
+;; https://github.com/noctuid/evil-guide#how-can-i-have-relative-line-numbers
+;; https://www.emacswiki.org/emacs/LineNumbers
+(when (version<= "26.0.50" emacs-version)
+  (setq-default display-line-numbers t
+              display-line-numbers-widen t
+              ;; this is the default
+              display-line-numbers-current-absolute t))
 
 ;; display the time in the mode-line
 (setq display-time-24hr-format t)
