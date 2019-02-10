@@ -36,6 +36,7 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "ivy")
 (my:load-config "projectile")
 (my:load-config "ui")
+(my:load-config "font")
 (my:load-config "lang")
 
 ;;; init.el ends here

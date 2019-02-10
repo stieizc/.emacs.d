@@ -17,12 +17,16 @@
 
 * project management
 
-- projectile
-- neotree for current directory/project
+- [X] projectile
+- [X] neotree for current directory/project
   - neotree-refresh uses timer. a buffer switching hook (if exists) would be more proper
 
 * eye candy
 
-- font
+- [X] font
   - font zooming
 - powerline
+
+* Window management
+
+- group window/buffer by project
