@@ -38,6 +38,8 @@
 
 (provide 'org-version)
 
-(use-package org) ; or org-plus-contrib if desired
+(use-package org
+  :config
+  (setq org-startup-folded 'showall)) ; or org-plus-contrib if desired
 
 ;;; org.el ends here
