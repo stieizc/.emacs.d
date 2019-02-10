@@ -23,4 +23,17 @@
             t))
 (add-hook 'emacs-lisp-mode-hook 'er:remove-elc-on-save)
 
+;;; Haskell setup
+
+(use-package haskell-mode
+  :defer
+  :config
+  ;; (setq-default haskell-tags-on-save nil
+  ;; 		haskell-process-suggest-remove-import-lines t
+  ;; 		haskell-process-auto-import-loaded-modules t
+  ;; 		haskell-process-type 'stack-ghci)
+  ;; (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+  ;; (add-hook 'haskell-mode-hook 'haskell-doc-mode)
+  )
+
 ;;; lang.el ends here
