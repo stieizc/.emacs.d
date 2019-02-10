@@ -19,6 +19,7 @@
 
 - projectile
 - neotree for current directory/project
+  - neotree-refresh uses timer. a buffer switching hook (if exists) would be more proper
 
 * eye candy
 

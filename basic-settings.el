@@ -50,6 +50,8 @@
   show-paren-delay 0                     ;show the paren immediately
   c-hungry-delete-key t)                 ;delete more than one space
 
+(show-paren-mode t)
+
 (setq save-place-file (expand-file-name "places" my:cache-dir))
 (save-place-mode t)
 

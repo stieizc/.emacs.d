@@ -33,8 +33,9 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "evil")
 (my:load-config "evil-hybrid-mode")
 (my:load-config "magit")
-(my:load-config "ui")
 (my:load-config "ivy")
+(my:load-config "projectile")
+(my:load-config "ui")
 (my:load-config "lang")
 
 ;;; init.el ends here
