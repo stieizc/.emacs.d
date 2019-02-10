@@ -24,8 +24,10 @@
  debug-on-error (and (not noninteractive) my:debug-mode)
  initial-buffer-choice my:todo)
 
+(defvar my:cache-dir (expand-file-name ".cache/" user-emacs-directory))
+
 ;;; - Autosave
-(defvar my:autosave-dir (expand-file-name ".cache/auto-save/" user-emacs-directory))
+(defvar my:autosave-dir (expand-file-name "auto-save/" my:cache-dir))
 (make-directory my:autosave-dir t)
 (setq
   backup-directory-alist `((".*" . ,my:autosave-dir)) ;don't clutter my fs and put backups into tmp
@@ -47,6 +49,9 @@
   mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))) ;make mouse scrolling smooth
   show-paren-delay 0                     ;show the paren immediately
   c-hungry-delete-key t)                 ;delete more than one space
+
+(setq save-place-file (expand-file-name "places" my:cache-dir))
+(save-place-mode t)
 
 ;; narrow to region should be enabled by default
 (put 'narrow-to-region 'disabled nil)
