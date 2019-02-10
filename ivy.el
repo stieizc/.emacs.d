@@ -11,6 +11,7 @@
 	ivy-display-style 'fancy
 	swiper-action-recenter t)
   (evil-leader/set-key
-   "ff" 'counsel-find-file))
+    "ff" 'counsel-find-file
+    "fe" #'(lambda () (interactive) (counsel-find-file "~/.emacs.d/init.el"))))
 
 ;;; ivy.el ends here
