@@ -1,10 +1,14 @@
 ;;; lang --- emacs lang components initialization
 
 ;;; Commentary:
-;;; Setup for:
-;;; 1. elisp
 
 ;;; Code:
+
+;;; Editor Config
+
+(use-package editorconfig
+  :config
+  (editorconfig-mode 1))
 
 ;;; Elisp setup
 
