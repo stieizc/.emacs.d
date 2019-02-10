@@ -4,7 +4,7 @@
 ;;; Initialization
 
 ;;; Code:
-(message "Initializing emacs: %s" user-init-file)
+(message "Initializing emacs: %s on %s" user-init-file window-system)
 
 (defvar my:debug-mode (or (getenv "DEBUG") init-file-debug)
   "If non-nil, all config functions will be verbose. Set DEBUG=1 in the command
@@ -33,7 +33,7 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "init-evil")
 (my:load-config "init-evil-hybrid-mode")
 (my:load-config "init-magit")
-(my:load-config "init-ui")
+(my:load-config "ui")
 (my:load-config "lang")
 
 ;;; init.el ends here

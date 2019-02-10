@@ -16,6 +16,12 @@ fetch-all:
 		--eval $(RELOAD_INIT) \
 		-f straight-fetch-all
 
+linux-fonts:
+	emacs -Q --batch -l init.el \
+		--eval $(RELOAD_INIT) \
+		--eval "(setq window-system 'x)" \
+		-f all-the-icons-install-fonts
+
 clean:
 	rm -f *.elc
 
