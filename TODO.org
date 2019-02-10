@@ -1,0 +1,27 @@
+* init manage
+
+- move recentf to .cache
+
+* c/c++
+
+- flycheck
+- company
+- lsp-mode
+- ccls
+
+* editing
+
+- space deleting / word selection
+- how spacemacs '#' works
+- spacemacs transient modes
+
+* project management
+
+- projectile
+- neotree for current directory/project
+
+* eye candy
+
+- font
+  - font zooming
+- powerline
