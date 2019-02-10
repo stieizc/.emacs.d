@@ -1,4 +1,4 @@
-;;; init-evil --- evil initialization
+;;; evil --- evil initialization
 
 ;;; Commentary:
 
@@ -20,6 +20,8 @@
   (setq-default evil-auto-indent nil)
   (evil-mode t)
   (evil-leader/set-key
-   "<SPC>" 'save-buffer))
+   "<SPC>" 'save-buffer
+   "bb" 'switch-to-buffer
+   "qq" 'save-buffers-kill-terminal))
 
-;;; init-evil.el ends here
+;;; evil.el ends here

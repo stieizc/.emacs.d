@@ -1,4 +1,4 @@
-;;; init-magit --- magit initialization
+;;; magit --- magit initialization
 
 ;;; Commentary:
 
@@ -15,4 +15,4 @@
    "gS"  'magit-stage-file
    "gU"  'magit-unstage-file))
 
-;;; init-magit.el ends here
+;;; magit.el ends here

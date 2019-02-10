@@ -30,9 +30,9 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 ;; see link in org.el
 (my:load-config "org-straight")
 (my:load-config "basic-settings")
-(my:load-config "init-evil")
-(my:load-config "init-evil-hybrid-mode")
-(my:load-config "init-magit")
+(my:load-config "evil")
+(my:load-config "evil-hybrid-mode")
+(my:load-config "magit")
 (my:load-config "ui")
 (my:load-config "ivy")
 (my:load-config "lang")

@@ -1,4 +1,4 @@
-;;; init-ui --- ui initialization
+;;; ui --- ui initialization
 
 ;;; Commentary:
 
@@ -12,4 +12,4 @@
 
 (use-package all-the-icons)
 
-;;; init-ui.el ends here
+;;; ui.el ends here

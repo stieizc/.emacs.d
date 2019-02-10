@@ -1,4 +1,4 @@
-;;; init-evil-hybrid-mode --- evil hybrid mode from spacemacs
+;;; evil-hybrid-mode --- evil hybrid mode from spacemacs
 
 ;;; Commentary:
 
@@ -17,4 +17,4 @@
 (setq evil-insert-state-map (make-sparse-keymap))
 (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 
-;;; init-evil-hybrid-mode.el ends here
+;;; evil-hybrid-mode.el ends here

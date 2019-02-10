@@ -7,6 +7,7 @@ image-dired/
 /projectile-bookmarks.eld
 /tramp
 /projectile.cache
+/recentf
 /eshell
 /url
 /games/
@@ -82,4 +83,3 @@ flycheck_*.el
 
 
 # End of https://www.gitignore.io/api/elisp,emacs
-/recentf
