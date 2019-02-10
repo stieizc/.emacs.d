@@ -27,6 +27,10 @@ or the current buffer directory."
 	(ignore-errors
 	  (neotree-dir (projectile-project-root)))
 	(neotree-show))))
+  (defun neotree-project-dir-toggle-no-focus ()
+    "neotree-project-dir-toggle without loosing focus on current buffer"
+    (interactive)
+    (save-selected-window (neotree-project-dir-toggle)))
   ;; projectile support
   (defun neotree-refresh (&optional is-auto-refresh)
     "Refresh the NeoTree buffer."
@@ -48,7 +52,8 @@ or the current buffer directory."
 	  (when (or is-auto-refresh neo-toggle-window-keep-p)
 	    (select-window cw))))))
   (evil-leader/set-key
-    "tt" #'neotree-project-dir-toggle))
+    "tt" #'neotree-project-dir-toggle-no-focus
+    "to" #'neotree-project-dir-toggle))
 
 (use-package doom-themes
   :config
