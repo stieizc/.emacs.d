@@ -8,6 +8,7 @@
 - company
 - lsp-mode
 - ccls
+- [X] clang-format
 
 * editing
 
@@ -30,3 +31,8 @@
 * Window management
 
 - group window/buffer by project
+
+* Completion
+
+- [X] ivy
+  - history
