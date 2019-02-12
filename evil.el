@@ -22,6 +22,7 @@
   (evil-leader/set-key
    "<SPC>" 'save-buffer
    "bb" 'switch-to-buffer
+   "bk" 'kill-buffer
    "qq" 'save-buffers-kill-terminal))
 
 ;;; evil.el ends here
