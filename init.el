@@ -38,5 +38,6 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "ui")
 (my:load-config "font")
 (my:load-config "lang")
+;; (my:load-config "utils")
 
 ;;; init.el ends here

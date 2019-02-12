@@ -53,4 +53,11 @@
   ;; (add-hook 'haskell-mode-hook 'haskell-doc-mode)
   )
 
+;;; PEG
+
+(use-package peg-mode
+  :straight nil
+  :load-path "third-party/peg-mode.el/"
+  :mode ("\\.peg\\'" . peg-mode))
+
 ;;; lang.el ends here
