@@ -81,6 +81,20 @@
 
 (add-hook 'c-mode-common-hook #'my:c-common-hook)
 
+;;; - Python
+
+;; (use-package lsp-python-ms
+;;   :straight (lsp-python-ms :type git :host github :repo "andrew-christianson/lsp-python-ms")
+;;   :config
+;;   (setq lsp-python-ms-dir "/usr/lib/microsoft-python-language-server/"
+;; 	lsp-python-ms-executable "/usr/bin/mspyls"))
+
+(defun my:python-hook ()
+  (lsp)
+  (flycheck-mode))
+
+(add-hook 'python-mode-hook #'my:python-hook)
+
 ;;; - Elisp setup
 
 ;; https://emacsredux.com/blog/2013/06/25/boost-performance-by-leveraging-byte-compilation/
