@@ -14,6 +14,14 @@
     "ff" 'counsel-find-file
     "fe" #'(lambda () (interactive) (find-file "~/.emacs.d/init.el"))))
 
+(use-package swiper
+  :config
+  (define-key evil-normal-state-map (kbd "*")
+    ;; (format "\\<%s\\>" (thing-at-point 'symbol))
+    (lambda () (interactive) (swiper (thing-at-point 'symbol))))
+  (define-key evil-normal-state-map (kbd "#")
+    (lambda () (interactive) (swiper (thing-at-point 'symbol)))))
+
 (use-package ivy-prescient
   :config
   (ivy-prescient-mode t))
