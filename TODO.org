@@ -4,10 +4,10 @@
 
 * c/c++
 
-- flycheck
-- company
-- lsp-mode
-- ccls
+- [X] flycheck
+- [X] company
+- [X] lsp-mode
+- [X] ccls
 - [X] clang-format
 
 * editing
