@@ -8,7 +8,9 @@
 
 ;;; Code:
 
-;;; 1. Bootstrap straight.el & use-package
+;;; 1. Bootstrap straight.el
+;;; 2. use-package
+;;; 3. el-patch
 
 (let ((bootstrap-file
         (expand-file-name
@@ -28,6 +30,15 @@
 ;;; 2. Setup use-package
 (setq straight-use-package-by-default t)
 (straight-use-package 'use-package)
+
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
+;;                          ("melpa" . "http://melpa.org/packages/")))
+
+;;; Done setup use-package
+
+;;; 3. Setup el-patch
+(use-package el-patch)
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
