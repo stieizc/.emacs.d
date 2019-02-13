@@ -30,8 +30,13 @@
 (defvar my:autosave-dir (expand-file-name "auto-save/" my:cache-dir))
 (make-directory my:autosave-dir t)
 (setq
-  backup-directory-alist `((".*" . ,my:autosave-dir)) ;don't clutter my fs and put backups into tmp
-  auto-save-file-name-transforms `((".*" ,my:autosave-dir t)))
+ backup-directory-alist `((".*" . ,my:autosave-dir)) ;don't clutter my fs and put backups into tmp
+ auto-save-file-name-transforms `((".*" ,my:autosave-dir t))
+ recentf-save-file (expand-file-name "recentf" my:cache-dir)
+ savehist-additional-variables '(kill-ring search-ring regexp-search-ring)
+ savehist-file (expand-file-name "savehist" my:cache-dir))
+
+(savehist-mode 1)
 
 ;;; - Basic editing habit
 (setq

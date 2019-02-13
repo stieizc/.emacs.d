@@ -14,4 +14,8 @@
     "ff" 'counsel-find-file
     "fe" #'(lambda () (interactive) (find-file "~/.emacs.d/init.el"))))
 
+(use-package ivy-prescient
+  :config
+  (ivy-prescient-mode t))
+
 ;;; ivy.el ends here

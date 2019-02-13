@@ -1,6 +1,6 @@
 * init manage
 
-- move recentf to .cache
+- [X] move recentf to .cache
 
 * c/c++
 
@@ -35,4 +35,4 @@
 * Completion
 
 - [X] ivy
-  - history
+  - [X] history
