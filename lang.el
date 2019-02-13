@@ -21,6 +21,8 @@
 
 ;; Flycheck
 (use-package flycheck
+  :init
+  (add-hook 'sh-mode-hook 'flycheck-mode)
   :config
   ;; for ccls
   (setq-default
