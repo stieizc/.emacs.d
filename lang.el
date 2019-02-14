@@ -68,6 +68,8 @@
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
 
 (use-package dap-mode
+  :straight (dap-mode :type git :host github :repo "yyoncho/dap-mode"
+		      :fork (:repo "git@github.com:wenxin-wang/dap-mode.git"))
   :commands (dap-mode dap-ui-mode)
   :init
   (defun my:dap-mode ()
@@ -138,6 +140,16 @@
 (use-package eldoc
   :defer t
   :diminish eldoc-mode)
+
+;;; Java
+
+(defun my:java-mode-hook ()
+  (require 'lsp-java)
+  (lsp))
+
+(use-package lsp-java
+  :init
+  (add-hook 'java-mode-hook #'my:java-mode-hook))
 
 ;;; - Haskell setup
 
