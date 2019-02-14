@@ -12,9 +12,17 @@
 
 * editing
 
-- space deleting / word selection
-- how spacemacs '#' works
-- spacemacs transient modes
+- [X] (builtin M-\) space deleting
+- [X] word selection -> symbol selection
+- [X] diminish modes
+- spacemacs transient modes: hydra
+  - font zooming (builtin C-x C-0 for restore)
+- better keybindings
+  - maybe even for ivy
+  - or deshadow evil from
+    - but my hand hurts
+    - lsp ui flycheck
+    - eldoc help
 
 * project management
 
@@ -25,7 +33,6 @@
 * eye candy
 
 - [X] font
-  - font zooming
 - powerline
 
 * Window management
@@ -36,3 +43,8 @@
 
 - [X] ivy
   - [X] history
+
+* Search
+
+- Swiper unifiy yank with isearch
+  - how spacemacs '#' works: a hydra mode
