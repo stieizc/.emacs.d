@@ -139,6 +139,11 @@
 ;;; - Builtin modes
 
 (use-package autorevert
+  :straight nil
   :diminish auto-revert-mode)
+
+(use-package abbrev
+  :straight nil
+  :diminish abbrev-mode)
 
 ;;; basic-settings.el ends here

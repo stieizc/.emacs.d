@@ -20,13 +20,14 @@
   (setq-default evil-auto-indent nil)
   (evil-mode t)
   (evil-leader/set-key
-   "<SPC>" 'save-buffer
-   "bb" 'switch-to-buffer
-   "bk" 'kill-buffer
-   "qq" 'save-buffers-kill-terminal
-   "z-" 'text-scale-adjust
-   "z+" 'text-scale-adjust
-   "z0" 'text-scale-adjust))
+   "<SPC>" #'save-buffer
+   "bb" #'switch-to-buffer
+   "bk" #'kill-buffer
+   "qq" #'save-buffers-kill-terminal
+   "zd" #'toggle-debug-on-error
+   "z-" #'text-scale-adjust
+   "z+" #'text-scale-adjust
+   "z0" #'text-scale-adjust))
 
 (use-package undo-tree
   :config
