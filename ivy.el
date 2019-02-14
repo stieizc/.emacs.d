@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package counsel
+  :diminish ivy-mode
   :config
   (ivy-mode t)
   (setq ivy-use-virtual-buffers t
@@ -15,6 +16,7 @@
     "fe" #'(lambda () (interactive) (find-file "~/.emacs.d/init.el"))))
 
 (use-package swiper
+  :diminish
   :config
   (define-key evil-normal-state-map (kbd "*")
     ;; (format "\\<%s\\>" (thing-at-point 'symbol))

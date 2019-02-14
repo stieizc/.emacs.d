@@ -25,4 +25,11 @@
    "bk" 'kill-buffer
    "qq" 'save-buffers-kill-terminal))
 
+(use-package undo-tree
+  :config
+  (setq undo-tree-auto-save-history t
+	undo-tree-history-directory-alist
+	`((".*" . ,(expand-file-name "undo-tree-history" my:cache-dir))))
+  :diminish undo-tree-mode)
+
 ;;; evil.el ends here

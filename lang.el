@@ -9,6 +9,7 @@
 ;; I think editor config just change some basic indent settings
 ;; It doesn't change indent logic
 (use-package editorconfig
+  :diminish editorconfig-mode
   :config
   (editorconfig-mode 1))
 
@@ -32,6 +33,7 @@
 
 ;;; Company
 (use-package company
+  :diminish company-mode
   :config
   (global-company-mode 1))
 
@@ -39,6 +41,7 @@
 
 (use-package yasnippet-snippets)
 (use-package yasnippet
+  :diminish yas-minor-mode
   :config
   (yas-global-mode 1))
 
@@ -132,6 +135,10 @@
   (er:remove-elc-on-save))
 
 (add-hook 'emacs-lisp-mode-hook #'my:elisp-mode-hook)
+
+(use-package eldoc
+  :defer t
+  :diminish eldoc-mode)
 
 ;;; - Haskell setup
 

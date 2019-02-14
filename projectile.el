@@ -4,6 +4,12 @@
 
 ;;; Code:
 
+(use-package projectile
+  :diminish projectile-mode
+  :init
+  (setq projectile-known-projects-file
+	(expand-file-name "projectile-bookmarks.eld" my:cache-dir)))
+
 (use-package counsel-projectile
   :config
   (counsel-projectile-mode t)

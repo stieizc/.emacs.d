@@ -136,4 +136,9 @@
 (setq
  send-mail-function 'sendmail-send-it)
 
+;;; - Builtin modes
+
+(use-package autorevert
+  :diminish auto-revert-mode)
+
 ;;; basic-settings.el ends here

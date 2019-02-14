@@ -30,6 +30,7 @@
 ;;; 2. Setup use-package
 (setq straight-use-package-by-default t)
 (straight-use-package 'use-package)
+(straight-use-package 'diminish)
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
