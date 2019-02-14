@@ -59,27 +59,7 @@
   :init
   (setq lsp-prefer-flymake nil
 	lsp-print-io t ; for debug
-	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
-  (el-patch-feature lsp-mode)
-  :config
-  (el-patch-defun lsp--uri-to-path (uri)
-    "Convert URI to a file path."
-    (let* ((url (url-generic-parse-url (url-unhex-string uri)))
-	   (type (url-type url))
-	   (file (el-patch-swap (url-filename url) (decode-coding-string (url-filename url) locale-coding-system)))
-	   (file-name (if (and type (not (string= type "file")))
-			  (if-let ((handler (lsp--get-uri-handler type)))
-			      (funcall handler uri)
-			    (error "Unsupported file scheme: %s" uri))
-			;; `url-generic-parse-url' is buggy on windows:
-			;; https://github.com/emacs-lsp/lsp-mode/pull/265
-			(or (and (eq system-type 'windows-nt)
-				 (eq (elt file 0) ?\/)
-				 (substring file 1))
-			    file))))
-
-      (lsp--fix-path-casing
-       (concat (-some 'lsp--workspace-host-root (lsp-workspaces)) file-name)))))
+	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir)))
 
 (use-package lsp-ui
   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
