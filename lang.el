@@ -67,6 +67,13 @@
   :init
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
 
+(use-package dap-mode
+  :commands (dap-mode dap-ui-mode)
+  :init
+  (defun my:dap-mode ()
+    (dap-mode 1)
+    (dap-ui-mode 1)))
+
 ;;; company
 (use-package company-lsp
   :requires company
@@ -86,6 +93,8 @@
   (require 'ccls)
   (lsp)
   (flycheck-mode)
+  (require 'dap-lldb)
+  (my:dap-mode)
   (when my:c-common-use-clang-format
     (make-local-variable 'indent-region-function)
     (setq indent-region-function #'clang-format-region)))
@@ -102,7 +111,9 @@
 
 (defun my:python-hook ()
   (lsp)
-  (flycheck-mode))
+  (flycheck-mode)
+  (require 'dap-python)
+  (my:dap-mode))
 
 (add-hook 'python-mode-hook #'my:python-hook)
 
