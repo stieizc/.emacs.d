@@ -38,8 +38,11 @@
 
 (provide 'org-version)
 
-(use-package org
+(use-package org ; or org-plus-contrib if desired
   :config
-  (setq org-startup-folded 'showall)) ; or org-plus-contrib if desired
+  (require 'org-tempo)
+  (setq org-startup-folded 'showall
+	org-adapt-indentation nil
+	org-src-preserve-indentation t))
 
 ;;; org.el ends here
