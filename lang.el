@@ -58,7 +58,7 @@
   :commands lsp
   :init
   (setq lsp-prefer-flymake nil
-	lsp-print-io t ; for debug
+	;; lsp-print-io t ; for debug
 	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir)))
 
 (use-package lsp-ui
