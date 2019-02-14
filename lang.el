@@ -4,6 +4,14 @@
 
 ;;; Code:
 
+;;; Smart parens
+
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode t)
+  :diminish smartparens-mode)
+
 ;;; Editor Config
 
 ;; I think editor config just change some basic indent settings
