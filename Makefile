@@ -14,7 +14,12 @@ freeze:
 fetch-all:
 	emacs -Q --batch -l init.el \
 		--eval $(RELOAD_INIT) \
-		-f straight-fetch-all
+		--eval "(let ((current-prefix-arg t)) (straight-fetch-all))"
+
+pull-all:
+	emacs -Q --batch -l init.el \
+		--eval $(RELOAD_INIT) \
+		--eval "(let ((current-prefix-arg t)) (straight-pull-all))"
 
 linux-fonts:
 	emacs -Q --batch -l init.el \
