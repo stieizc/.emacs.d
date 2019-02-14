@@ -72,6 +72,7 @@
 		      :fork (:repo "git@github.com:wenxin-wang/dap-mode.git"))
   :commands (dap-mode dap-ui-mode)
   :init
+  (setq dap--breakpoints-file (expand-file-name ".dap-breakpoints" my:cache-dir))
   (defun my:dap-mode ()
     (dap-mode 1)
     (dap-ui-mode 1)))
@@ -144,8 +145,10 @@
 ;;; Java
 
 (defun my:java-mode-hook ()
+  (require 'dap-java)
   (require 'lsp-java)
-  (lsp))
+  (lsp)
+  (require 'dap-java))
 
 (use-package lsp-java
   :init

@@ -17,6 +17,9 @@ image-dired/
 /straight/*
 !/straight/versions/
 
+/eclipse.jdt.ls/
+/workspace/
+
 # Created by https://www.gitignore.io/api/elisp,emacs
 # Edit at https://www.gitignore.io/?templates=elisp,emacs
 
