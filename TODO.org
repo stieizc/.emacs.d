@@ -16,8 +16,8 @@
 - [X] word selection -> symbol selection
 - [X] diminish modes
 - spacemacs transient modes: hydra
-  - font zooming (builtin C-x C-0 for restore)
 - better keybindings
+  - [X] font zooming (builtin C-x C-0 for restore)
   - maybe even for ivy
   - or deshadow evil from
     - but my hand hurts
