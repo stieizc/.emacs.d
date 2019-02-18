@@ -29,15 +29,15 @@
   :commands clang-format-region)
 
 ;; Flycheck
-(use-package flycheck
-  :init
-  (add-hook 'sh-mode-hook 'flycheck-mode)
-  :config
-  ;; for ccls
-  (setq-default
-   flycheck-disabled-checkers
-   '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
-  ;; (global-flycheck-mode)) It's annoyting sometimes
+;; (use-package flycheck
+;;   :init
+;;   (add-hook 'sh-mode-hook 'flycheck-mode)
+;;   :config
+;;   ;; for ccls
+;;   (setq-default
+;;    flycheck-disabled-checkers
+;;    '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
+;;   ;; (global-flycheck-mode)) It's annoyting sometimes
 
 ;;; Company
 (use-package company
@@ -58,8 +58,12 @@
   :commands lsp
   :init
   (setq lsp-prefer-flymake nil
-	;; lsp-print-io t ; for debug
-	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir)))
+	;; lsp-ui-doc-mode nil
+	lsp-print-io t ; for debug
+	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
+  :config
+  (evil-leader/set-key
+   "gd" #'lsp-find-definition))
 
 (use-package lsp-ui
   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
@@ -95,7 +99,8 @@
 (defun my:c-common-hook ()
   (require 'ccls)
   (lsp)
-  (flycheck-mode)
+  ;; (flycheck-mode)
+  (flymake-mode)
   (require 'dap-lldb)
   (my:dap-mode)
   (when my:c-common-use-clang-format
@@ -114,7 +119,8 @@
 
 (defun my:python-hook ()
   (lsp)
-  (flycheck-mode)
+  ;; (flycheck-mode)
+  (flymake-mode)
   (require 'dap-python)
   (my:dap-mode))
 
@@ -141,6 +147,16 @@
 (use-package eldoc
   :defer t
   :diminish eldoc-mode)
+
+;;; Rust
+
+(defun my:rust-mode-hook ()
+  (lsp))
+
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  :init
+  (add-hook 'rust-mode-hook #'my:rust-mode-hook))
 
 ;;; Java
 
