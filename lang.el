@@ -72,8 +72,8 @@
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
 
 (use-package dap-mode
-  :straight (dap-mode :type git :host github :repo "yyoncho/dap-mode"
-		      :fork (:repo "git@github.com:wenxin-wang/dap-mode.git"))
+  :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
+		      :fork (:repo "git@github.com:wenxin-wang/dap-mode"))
   :commands (dap-mode dap-ui-mode)
   :init
   (setq dap--breakpoints-file (expand-file-name ".dap-breakpoints" my:cache-dir))
