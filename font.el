@@ -41,8 +41,8 @@ CJK-SIZE: font size for CJK characters."
   (with-selected-frame (or frame (selected-frame))
                        (if (display-graphic-p)
                            (if (>= (breeze--get-display-dpi) 150)
-                               (breeze--set-font-and-size "Sarasa Mono SC" 20 "Sarasa Mono SC" 20)
-                               (breeze--set-font-and-size "Sarasa Mono SC" 16 "Sarasa Mono SC" 16)))))
+                               (breeze--set-font-and-size "Sarasa Mono SC" 25 "Sarasa Mono SC" 25)
+                               (breeze--set-font-and-size "Sarasa Mono SC" 20 "Sarasa Mono SC" 20)))))
 		       ;; (load-theme 'doom-solarized-light t)
 		       ;; (spaceline-compile)))
 
