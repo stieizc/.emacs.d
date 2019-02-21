@@ -11,12 +11,12 @@
 ;;                     :width 'normal)
 
 ;; https://github.com/zhangjunphy/breeze/blob/master/breeze-ui.el
-
 (defun breeze--get-display-dpi ()
   "Get DPI of the display."
   (if (display-graphic-p)
-      (round (/ (display-pixel-height)
-    (/ (display-mm-height) 25.4)))
+      (let ((mm-height (cadr (frame-monitor-attribute 'mm-size)))
+	    (pixel-height (nth 3 (frame-monitor-attribute 'geometry))))
+	(round (/ pixel-height (/ mm-height 25.4))))
     (error "Attempt to calculate the dpi of a non-graphic display")))
 
 (defun breeze--set-font-and-size (latin-family
@@ -41,12 +41,13 @@ CJK-SIZE: font size for CJK characters."
   (with-selected-frame (or frame (selected-frame))
                        (if (display-graphic-p)
                            (if (>= (breeze--get-display-dpi) 150)
-                               (breeze--set-font-and-size "Sarasa Mono SC" 25 "Sarasa Mono SC" 25)
-                               (breeze--set-font-and-size "Sarasa Mono SC" 20 "Sarasa Mono SC" 20)))))
+                               (breeze--set-font-and-size "Sarasa Mono SC" 24 "Sarasa Mono SC" 24)
+                               (breeze--set-font-and-size "Sarasa Mono SC" 19 "Sarasa Mono SC" 19)))))
 		       ;; (load-theme 'doom-solarized-light t)
 		       ;; (spaceline-compile)))
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions #'breeze-refresh-frame))
+(when (daemonp)
+  (add-hook 'after-make-frame-functions #'breeze-refresh-frame)
+  (add-hook 'window-size-change-functions #'breeze-refresh-frame))
 
 ;;; font.el ends here
