@@ -111,6 +111,8 @@
               ;; this is the default
               display-line-numbers-current-absolute t))
 
+(setq-default show-trailing-whitespace t)
+
 ;; display the time in the mode-line
 (setq display-time-24hr-format t)
 (setq display-time-default-load-average nil)
