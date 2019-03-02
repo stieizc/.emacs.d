@@ -158,6 +158,20 @@
   :init
   (add-hook 'rust-mode-hook #'my:rust-mode-hook))
 
+;;; Tex
+
+(use-package tex
+  :straight auctex
+  :init
+  (setq ; TeX-command-default latex-build-command
+	TeX-auto-save t
+	TeX-parse-self t
+	TeX-syntactic-comment t
+	;; Synctex support
+	TeX-source-correlate-start-server nil
+	;; Don't insert line-break at inline math
+	LaTeX-fill-break-at-separators nil))
+
 ;;; Java
 
 (defun my:java-mode-hook ()
