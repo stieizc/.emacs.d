@@ -36,6 +36,10 @@
 	`((".*" . ,(expand-file-name "undo-tree-history" my:cache-dir))))
   :diminish undo-tree-mode)
 
+(use-package evil-matchit
+ :config
+ (global-evil-matchit-mode 1))
+
 (use-package hydra)
 
 ;;; evil.el ends here
