@@ -4,6 +4,9 @@
 
 ;;; Code:
 
+(use-package sudo-edit
+  :functions sudo-edit)
+
 (use-package counsel
   :diminish ivy-mode
   :config
@@ -13,6 +16,7 @@
 	swiper-action-recenter t)
   (evil-leader/set-key
     "ff" 'counsel-find-file
+    "fE" #'sudo-edit
     "fe" #'(lambda () (interactive) (find-file "~/.emacs.d/init.el"))))
 
 (use-package swiper
