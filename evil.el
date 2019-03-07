@@ -4,6 +4,16 @@
 
 ;;; Code:
 
+;; evil
+
+(use-package evil
+  :init
+  (setq evil-want-integration t ;; This is optional since it's already set to t by default.
+	evil-want-keybinding nil)
+  (setq-default evil-auto-indent nil)
+  :config
+  (evil-mode t))
+
 ;; evil-leader
 ;; jiege!
 ;; https://github.com/jiegec/emacs.d/blob/master/lisp/init-evil.el
@@ -11,14 +21,7 @@
 (use-package evil-leader
   :config
   (global-evil-leader-mode t)
-  (evil-leader/set-leader "<SPC>"))
-
-;; evil
-
-(use-package evil
-  :config
-  (setq-default evil-auto-indent nil)
-  (evil-mode t)
+  (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
    "<SPC>" #'save-buffer
    "bb" #'switch-to-buffer
@@ -28,6 +31,11 @@
    "z-" #'text-scale-adjust
    "z+" #'text-scale-adjust
    "z0" #'text-scale-adjust))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 (use-package undo-tree
   :config
