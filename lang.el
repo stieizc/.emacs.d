@@ -29,15 +29,28 @@
   :commands clang-format-region)
 
 ;; Flycheck
-;; (use-package flycheck
-;;   :init
-;;   (add-hook 'sh-mode-hook 'flycheck-mode)
+(use-package flycheck
+  :init
+  (add-hook 'sh-mode-hook 'flycheck-mode)
+  :config
+  ;; for ccls
+  (setq-default
+   flycheck-disabled-checkers
+   '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  (evil-leader/set-key
+    "el" #'flycheck-list-errors
+    "en" #'next-error
+    "ep" #'previous-error))
+  ;; (global-flycheck-mode)) It's annoyting sometimes
+
+;; Flymake
+;; (use-package flymake
 ;;   :config
-;;   ;; for ccls
-;;   (setq-default
-;;    flycheck-disabled-checkers
-;;    '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
-;;   ;; (global-flycheck-mode)) It's annoyting sometimes
+;;   (evil-leader/set-key
+;;     "el" #'flymake-show-diagnostic
+;;     "en" #'flymake-goto-next-error
+;;     "ep" #'flymake-goto-prev-error
+;;     "ed" #'flymake-goto-diagnostic))
 
 ;;; Company
 (use-package company
@@ -59,17 +72,29 @@
   :init
   (setq lsp-prefer-flymake nil
 	;; lsp-ui-doc-mode nil
-	lsp-print-io t ; for debug
+	;; lsp-print-io t ; for debug
+	;; lsp-ui-doc-max-width 40
+	lsp-ui-sideline-show-symbol t
+	lsp-ui-sideline-show-hover nil
+	;; lsp-ui-doc-include-signature t
+	;; lsp-ui-sideline-enable nil
 	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
   :config
   (evil-leader/set-key
-   "gd" #'lsp-find-definition))
+    "gd" #'lsp-find-definition
+    "gc" #'ccls-call-hierarchy
+    "gm" #'ccls-member-hierarchy
+    "th" #'lsp-ui-sideline-toggle-symbols-info))
 
 (use-package lsp-ui
   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
   :commands lsp-ui-mode
   :init
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+  :config
+  (evil-leader/set-key
+    "tD" #'lsp-ui-doc-hide
+    "td" #'lsp-ui-doc-show))
 
 (use-package dap-mode
   :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
@@ -87,6 +112,9 @@
   :config
   (push 'company-lsp company-backends))
 
+(use-package ivy-xref
+  :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+
 ;;; - C
 
 ;; ccls
@@ -99,15 +127,20 @@
 (defun my:c-common-hook ()
   (require 'ccls)
   (lsp)
-  ;; (flycheck-mode)
-  (flymake-mode)
+  (flycheck-mode)
+  ;; (flymake-mode)
   (require 'dap-lldb)
   (my:dap-mode)
+  (ccls-code-lens-mode)
   (when my:c-common-use-clang-format
     (make-local-variable 'indent-region-function)
     (setq indent-region-function #'clang-format-region)))
 
+(defun my:ccls-tree-mode-hook ()
+  (turn-off-evil-mode))
+
 (add-hook 'c-mode-common-hook #'my:c-common-hook)
+(add-hook 'ccls-tree-mode-hook #'my:ccls-tree-mode-hook)
 
 ;;; - Python
 
@@ -119,8 +152,8 @@
 
 (defun my:python-hook ()
   (lsp)
-  ;; (flycheck-mode)
-  (flymake-mode)
+  (flycheck-mode)
+  ;; (flymake-mode)
   (require 'dap-python)
   (my:dap-mode))
 
