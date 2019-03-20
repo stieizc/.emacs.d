@@ -28,6 +28,12 @@
   (define-key evil-normal-state-map (kbd "#")
     (lambda () (interactive) (swiper (thing-at-point 'symbol)))))
 
+(use-package prescient
+  :init
+  (setq prescient-save-file (expand-file-name "var/prescient-save.el" my:cache-dir))
+  :config
+  (prescient-persist-mode))
+
 (use-package ivy-prescient
   :config
   (ivy-prescient-mode t))

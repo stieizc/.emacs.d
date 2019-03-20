@@ -50,7 +50,7 @@ SCALE: font scale."
   (interactive)
   (with-selected-frame (or frame (selected-frame))
     (if (display-graphic-p)
-	(if (>= (breeze--get-display-dpi) 150)
+	(if (>= (breeze--get-display-dpi) 120)
 	    (breeze--set-font-and-size "Sarasa Mono SC" 24 "Sarasa Mono SC" 24)
 	  ;; (breeze--set-font-and-scale "Sarasa Mono SC" 5)
 	  (breeze--set-font-and-size "Sarasa Mono SC" 19 "Sarasa Mono SC" 19)

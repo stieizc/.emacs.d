@@ -91,7 +91,10 @@
   :commands lsp-ui-mode
   :init
   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+  (setq lsp-ui-peek-always-show t)
   :config
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (evil-leader/set-key
     "tD" #'lsp-ui-doc-hide
     "td" #'lsp-ui-doc-show))
@@ -236,5 +239,9 @@
   :straight nil
   :load-path "third-party/peg-mode.el/"
   :mode ("\\.peg\\'" . peg-mode))
+
+;;; GNUPlot
+(use-package gnuplot-mode
+  :mode ("\\.gp\\'" "\\.gnuplot\\'"))
 
 ;;; lang.el ends here

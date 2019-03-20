@@ -35,7 +35,10 @@
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init))
+  (evil-collection-init)
+  (evil-collection-define-key 'normal 'Info-mode-map
+    "h" #'evil-backward-char
+    "l" #'evil-forward-char))
 
 (use-package undo-tree
   :config
