@@ -39,10 +39,14 @@
 (provide 'org-version)
 
 (use-package org ; or org-plus-contrib if desired
-  :config
-  (require 'org-tempo)
+  :init
   (setq org-startup-folded 'showall
 	org-adapt-indentation nil
-	org-src-preserve-indentation t))
+	org-src-preserve-indentation t
+	org-todo-keywords
+	'((sequence "TODO" "DONE")
+	  (type "TODAY" "TOMORROW" "THISWEEK" "NEXTWEEK" "THISMONTH" "NEXTMONTH" "SOMEDAY" "|" "ARCHIVE")))
+  :config
+  (require 'org-tempo))
 
 ;;; org.el ends here

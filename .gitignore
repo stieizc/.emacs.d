@@ -1,3 +1,5 @@
+/priv.el
+
 *.dat
 
 auto-save-list

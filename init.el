@@ -21,6 +21,11 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (defun my:load-config (@file-relative-path)
   (load (concat user-emacs-directory @file-relative-path)))
 
+(defun my:load-config-when-exists (@file-relative-path)
+  (let ((path (concat user-emacs-directory @file-relative-path)))
+    (when (file-exists-p (concat path ".el"))
+      (load path))))
+
 ;; I know, I know. I'd like to have emacs accept custom files
 ;; under different path than "~/.emacs.d"
 (setq user-emacs-directory (my:fullpath-current-file))
@@ -39,6 +44,7 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "font")
 (my:load-config "lang")
 (my:load-config "pdf")
+(my:load-config-when-exists "priv")
 (my:load-config "work")
 ;; (my:load-config "utils")
 

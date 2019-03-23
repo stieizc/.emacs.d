@@ -44,7 +44,11 @@
 	mu4e-drafts-folder "/fastmail/Drafts"     ;; unfinished messages
 	mu4e-trash-folder  "/fastmail/Trash"      ;; trashed messages
 	mu4e-refile-folder "/fastmail/Archive"
-	mu4e-get-mail-command "mbsync -V fastmail-inbox")
+	mu4e-get-mail-command "mbsync -V fastmail-inbox"
+	mu4e-update-interval 600
+	mu4e-compose-in-new-frame t
+	message-send-mail-function 'message-send-mail-with-sendmail
+	sendmail-program "/usr/bin/msmtp")
   :config
   (defun mu4e-headers-mark-all (MARKPAIR)
     "Put a ! \(read) mark on all visible unread messages"
@@ -56,6 +60,18 @@
     (interactive)
     (mu4e-headers-mark-all '(delete)))
   (evil-leader/set-key
-    "ue" #'mu4e
+    "uu" #'mu4e
     "uD" #'mu4e-headers-mark-all-delete))
+
+(use-package mu4e-alert
+  :after mu4e
+  :init
+  (with-eval-after-load 'org
+    (use-package org-mu4e
+      :straight nil))
+  (setq mu4e-alert-interesting-mail-query
+     "flag:unread maildir:/fastmail/INBOX")
+  (mu4e-alert-set-default-style 'libnotify)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
 ;;; work.el ends here
