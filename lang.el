@@ -26,6 +26,8 @@
 ;; Clang-format
 
 (use-package clang-format
+  :straight nil
+  :load-path ("/usr/share/clang/" "/usr/local/share/clang/")
   :commands clang-format-region)
 
 ;; Flycheck
@@ -129,6 +131,7 @@
 
 (defun my:c-common-hook ()
   (require 'ccls)
+  (setq electric-indent-mode -1)
   (lsp)
   (flycheck-mode)
   ;; (flymake-mode)
