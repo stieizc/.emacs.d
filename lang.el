@@ -31,19 +31,19 @@
   :commands clang-format-region)
 
 ;; Flycheck
-(use-package flycheck
-  :init
-  (add-hook 'sh-mode-hook 'flycheck-mode)
-  :config
-  ;; for ccls
-  (setq-default
-   flycheck-disabled-checkers
-   '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  (evil-leader/set-key
-    "el" #'flycheck-list-errors
-    "en" #'next-error
-    "ep" #'previous-error))
-  ;; (global-flycheck-mode)) It's annoyting sometimes
+;; (use-package flycheck
+;;   :init
+;;   (add-hook 'sh-mode-hook 'flycheck-mode)
+;;   :config
+;;   ;; for ccls
+;;   (setq-default
+;;    flycheck-disabled-checkers
+;;    '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+;;   (evil-leader/set-key
+;;     "el" #'flycheck-list-errors
+;;     "en" #'next-error
+;;     "ep" #'previous-error))
+;;   ;; (global-flycheck-mode)) It's annoyting sometimes
 
 ;; Flymake
 ;; (use-package flymake
@@ -69,84 +69,83 @@
   (yas-global-mode 1))
 
 ;;; lsp-mode
-(use-package lsp-mode
-  :commands lsp
-  :init
-  (setq lsp-prefer-flymake nil
-	;; lsp-ui-doc-mode nil
-	;; lsp-print-io t ; for debug
-	;; lsp-ui-doc-max-width 40
-	lsp-ui-sideline-show-symbol t
-	lsp-ui-sideline-show-hover nil
-	;; lsp-ui-doc-include-signature t
-	;; lsp-ui-sideline-enable nil
-	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
-  :config
-  (evil-leader/set-key
-    "gd" #'lsp-find-definition
-    "gc" #'ccls-call-hierarchy
-    "gm" #'ccls-member-hierarchy
-    "th" #'lsp-ui-sideline-toggle-symbols-info))
-
-(use-package lsp-ui
-  ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
-  :commands lsp-ui-mode
-  :init
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
-  (setq lsp-ui-peek-always-show t)
-  :config
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (evil-leader/set-key
-    "tD" #'lsp-ui-doc-hide
-    "td" #'lsp-ui-doc-show))
-
-(use-package dap-mode
-  :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
-		      :fork (:repo "git@github.com:wenxin-wang/dap-mode"))
-  :commands (dap-mode dap-ui-mode)
-  :init
-  (setq dap--breakpoints-file (expand-file-name ".dap-breakpoints" my:cache-dir))
-  (defun my:dap-mode ()
-    (dap-mode 1)
-    (dap-ui-mode 1)))
-
-;;; company
-(use-package company-lsp
-  :requires company
-  :config
-  (push 'company-lsp company-backends))
+;; (use-package lsp-mode
+;;   :commands lsp
+;;   :init
+;;   (setq lsp-prefer-flymake nil
+;; 	;; lsp-ui-doc-mode nil
+;; 	;; lsp-print-io t ; for debug
+;; 	lsp-ui-doc-max-width 40
+;; 	lsp-ui-sideline-show-symbol t
+;; 	lsp-ui-sideline-show-hover nil
+;; 	;; lsp-ui-doc-include-signature t
+;; 	;; lsp-ui-sideline-enable nil
+;; 	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
+;;   :config
+;;   (evil-leader/set-key
+;;     "gd" #'lsp-find-definition
+;;     "gc" #'ccls-call-hierarchy
+;;     "gm" #'ccls-member-hierarchy
+;;     "th" #'lsp-ui-sideline-toggle-symbols-info))
+;; 
+;; (use-package lsp-ui
+;;   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
+;;   :commands lsp-ui-mode
+;;   :init
+;;   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+;;   (setq lsp-ui-peek-always-show t)
+;;   :config
+;;   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+;;   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+;;   (evil-leader/set-key
+;;     "td" #'lsp-ui-doc-mode))
+;; 
+;; (use-package dap-mode
+;;   :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
+;; 		      :fork (:repo "git@github.com:wenxin-wang/dap-mode"))
+;;   :commands (dap-mode dap-ui-mode)
+;;   :init
+;;   (setq dap--breakpoints-file (expand-file-name ".dap-breakpoints" my:cache-dir))
+;;   (defun my:dap-mode ()
+;;     (dap-mode 1)
+;;     (dap-ui-mode 1)))
+;; 
+;; ;;; company
+;; (use-package company-lsp
+;;   :requires company
+;;   :config
+;;   (push 'company-lsp company-backends))
 
 (use-package ivy-xref
   :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 ;;; - C
 
-;; ccls
-(use-package ccls
-  :defer t)
+;; ;; ccls
+;; (use-package ccls
+;;   :defer t)
 
 (defvar-local my:c-common-use-clang-format t
   "use clang-format for regiion indent, default to t")
 
 (defun my:c-common-hook ()
-  (require 'ccls)
+  ;; (require 'ccls)
   (setq electric-indent-mode -1)
-  (lsp)
-  (flycheck-mode)
+  ;; (lsp)
+  ;; (flycheck-mode)
   ;; (flymake-mode)
-  (require 'dap-lldb)
-  (my:dap-mode)
-  (ccls-code-lens-mode)
+  ;; (require 'dap-lldb)
+  ;; (my:dap-mode)
+  ;; (ccls-code-lens-mode)
   (when my:c-common-use-clang-format
     (make-local-variable 'indent-region-function)
     (setq indent-region-function #'clang-format-region)))
 
-(defun my:ccls-tree-mode-hook ()
-  (turn-off-evil-mode))
-
-(add-hook 'c-mode-common-hook #'my:c-common-hook)
-(add-hook 'ccls-tree-mode-hook #'my:ccls-tree-mode-hook)
+;; (defun my:ccls-tree-mode-hook ()
+;;   (turn-off-evil-mode))
+;;
+;; (add-hook 'c-mode-common-hook #'my:c-common-hook)
+;; (add-hook 'ccls-tree-mode-hook #'my:ccls-tree-mode-hook)
 
 ;;; - Python
 
@@ -157,11 +156,12 @@
 ;; 	lsp-python-ms-executable "/usr/bin/mspyls"))
 
 (defun my:python-hook ()
-  (lsp)
-  (flycheck-mode)
+  ;; (lsp)
+  ;; (flycheck-mode)
   ;; (flymake-mode)
-  (require 'dap-python)
-  (my:dap-mode))
+  ;; (require 'dap-python)
+  ;; (my:dap-mode)
+  )
 
 (add-hook 'python-mode-hook #'my:python-hook)
 
@@ -190,7 +190,8 @@
 ;;; Rust
 
 (defun my:rust-mode-hook ()
-  (lsp))
+  ;; (lsp)
+  )
 
 (use-package rust-mode
   :mode "\\.rs\\'"
@@ -214,14 +215,15 @@
 ;;; Java
 
 (defun my:java-mode-hook ()
-  (require 'dap-java)
-  (require 'lsp-java)
-  (lsp)
-  (require 'dap-java))
+  ;; (require 'dap-java)
+  ;; (require 'lsp-java)
+  ;; (lsp)
+  ;; (require 'dap-java)
+  )
 
-(use-package lsp-java
-  :init
-  (add-hook 'java-mode-hook #'my:java-mode-hook))
+;; (use-package lsp-java
+;;   :init
+;;   (add-hook 'java-mode-hook #'my:java-mode-hook))
 
 ;;; - Haskell setup
 
@@ -246,5 +248,25 @@
 ;;; GNUPlot
 (use-package gnuplot-mode
   :mode ("\\.gp\\'" "\\.gnuplot\\'"))
+
+;;; Golang
+(defun my:go-mode-hook ()
+  ;; (lsp)
+  )
+
+(use-package go-mode
+  :init
+  (add-hook 'go-mode-hook #'my:go-mode-hook)
+  :mode "\\.go\\'")
+
+;;; Dart
+(defun my:dart-mode-hook ()
+  ;; (lsp)
+  )
+
+(use-package dart-mode
+  :init
+  (add-hook 'dart-mode-hook #'my:dart-mode-hook)
+  :mode "\\.dart\\'")
 
 ;;; lang.el ends here
