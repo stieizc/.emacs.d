@@ -269,4 +269,7 @@
   (add-hook 'dart-mode-hook #'my:dart-mode-hook)
   :mode "\\.dart\\'")
 
+;;; lua
+(use-package lua-mode)
+
 ;;; lang.el ends here
