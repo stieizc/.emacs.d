@@ -42,10 +42,7 @@
   :init
   (setq org-startup-folded 'showall
 	org-adapt-indentation nil
-	org-src-preserve-indentation t
-	org-todo-keywords
-	'((sequence "TODO" "DONE")
-	  (type "TODAY" "TOMORROW" "THISWEEK" "NEXTWEEK" "THISMONTH" "NEXTMONTH" "SOMEDAY" "|" "ARCHIVE")))
+	org-src-preserve-indentation t)
   :config
   (require 'org-tempo))
 
