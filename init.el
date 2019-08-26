@@ -46,6 +46,7 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (my:load-config "pdf")
 (my:load-config-when-exists "priv")
 (my:load-config "work")
+(my:load-config "life")
 ;; (my:load-config "utils")
 
 ;;; init.el ends here
