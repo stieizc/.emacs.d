@@ -23,6 +23,28 @@
     "wh" #'org-miyuki/insert-header
     "wK" #'org-miyuki/ivy-list-keywords))
 
+(use-package my:journal
+  :straight nil
+  :init
+  (defvar my:journal-directory (expand-file-name "~/Projects/Journals"))
+  (defun my:journal-find-today()
+      (interactive)
+      (find-file
+       (expand-file-name
+	(format-time-string "%Y-%m-%d.org")
+	my:journal-directory)))
+  (defun my:journal-new-entry()
+    (interactive)
+    (my:journal-find-today)
+    (goto-char (point-max))
+    (insert
+     (format-time-string "\n%H:%M:%S ")))
+  (provide 'my:journal)
+  :config
+  (evil-leader/set-key
+    "wj" #'my:journal-find-today
+    "wt" #'my:journal-new-entry))
+
 (use-package counsel-miyuki
   :straight (counsel-miyuki
 	     :local-repo "miyuki"
