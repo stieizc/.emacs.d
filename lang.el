@@ -116,6 +116,9 @@
 ;;   :config
 ;;   (push 'company-lsp company-backends))
 
+(electric-indent-mode -1)
+(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
+
 (use-package ivy-xref
   :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
