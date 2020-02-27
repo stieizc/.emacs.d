@@ -275,4 +275,7 @@
 ;;; lua
 (use-package lua-mode)
 
+;;; reasonml
+(use-package reason-mode)
+
 ;;; lang.el ends here

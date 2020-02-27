@@ -53,4 +53,6 @@
 
 (use-package hydra)
 
+(use-package ranger)
+
 ;;; evil.el ends here
