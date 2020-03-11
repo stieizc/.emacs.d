@@ -4,10 +4,10 @@
 
 ;;; Code:
 
-(use-package pdf-tools
-  :mode ("\\.pdf$" . pdf-view-mode)
-  :config
-  (pdf-tools-install))
+;; (use-package pdf-tools
+;;   :mode ("\\.pdf$" . pdf-view-mode)
+;;   :config
+;;   (pdf-tools-install))
 
   ;; (let ((foreground-orig (car pdf-view-midnight-colors)))
   ;;   (setq pdf-view-midnight-colors

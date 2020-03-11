@@ -42,8 +42,14 @@
   :init
   (setq org-startup-folded 'showall
 	org-adapt-indentation nil
-	org-src-preserve-indentation t)
-  :config
-  (require 'org-tempo))
+	org-src-preserve-indentation t
+    org-file-apps
+      '((auto-mode . emacs)
+          (directory . emacs)
+          ("\\.mm\\'" . default)
+          ("\\.x?html?\\'" . default)
+          ("\\.pdf\\'" . "okular %s")))
+    :config
+    (require 'org-tempo))
 
 ;;; org.el ends here
