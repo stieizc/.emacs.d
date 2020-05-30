@@ -12,8 +12,9 @@
   :config
   (ivy-mode t)
   (setq ivy-use-virtual-buffers t
-	ivy-display-style 'fancy
-	swiper-action-recenter t)
+    ivy-display-style 'fancy
+    ivy-height 20
+    swiper-action-recenter t)
   (evil-leader/set-key
     "ff" 'counsel-find-file
     "fE" #'sudo-edit
@@ -37,5 +38,10 @@
 (use-package ivy-prescient
   :config
   (ivy-prescient-mode t))
+
+;; (use-package ivy-rich
+;;   :config
+;;   (ivy-rich-mode 1)
+;;   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
 
 ;;; ivy.el ends here
