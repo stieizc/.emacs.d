@@ -26,13 +26,22 @@
 (use-package my:journal
   :straight nil
   :init
-  (defvar my:journal-directory (expand-file-name "~/Projects/Journals"))
+  (defun my:journal-find-file()
+    (interactive)
+    (with-temp-buffer
+      (setq default-directory my:scratchdir)
+      (counsel-find-file)))
   (defun my:journal-find-today()
-      (interactive)
-      (find-file
-       (expand-file-name
-	(format-time-string "%Y-%m-%d.org")
-	my:journal-directory)))
+    (interactive)
+    (find-file
+      (expand-file-name
+        (format-time-string "%Y-%m-%d.org")
+        my:scratchdir)))
+  (defun my:journal-find-today-title()
+    (interactive)
+    (with-temp-buffer
+      (setq default-directory my:scratchdir)
+      (counsel-find-file (format-time-string "%Y-%m-%d-"))))
   (defun my:journal-new-entry()
     (interactive)
     (my:journal-find-today)
@@ -42,8 +51,10 @@
   (provide 'my:journal)
   :config
   (evil-leader/set-key
-    "wj" #'my:journal-find-today
-    "wt" #'my:journal-new-entry))
+    "wt" #'my:journal-find-today
+    "wT" #'my:journal-new-entry
+    "wf" #'my:journal-find-file
+    "wF" #'my:journal-find-today-title))
 
 (use-package counsel-miyuki
   :straight (counsel-miyuki
@@ -54,8 +65,8 @@
   :config
   (evil-leader/set-key
     "ww" #'counsel-miyuki/ag
-    "wf" #'counsel-miyuki/find-file
-    "wF" #'counsel-miyuki/find-all-file))
+    "wj" #'counsel-miyuki/find-file
+    "wJ" #'counsel-miyuki/find-all-file))
 
 ;; (use-package mu4e
 ;;   :straight nil

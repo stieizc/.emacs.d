@@ -16,6 +16,7 @@
 
 ;;; - Startup
 
+(defvar my:scratchdir (expand-file-name "~/zscratchpad/"))
 (defvar my:todo "~/zscratchpad/todo.org")
 (setq
  inhibit-startup-message t
