@@ -18,9 +18,9 @@
                     "straight/repos/org/" user-emacs-directory)))
     (string-trim
       (git-run "describe"
-               "--match=release\*"
-               "--abbrev=6"
-               "HEAD"))))
+        "--match=release\*"
+        "--abbrev=6"
+        "HEAD"))))
 
 (defun org-release ()
   "The release version of org-mode.
@@ -32,24 +32,25 @@
       (string-remove-prefix
         "release_"
         (git-run "describe"
-                 "--match=release\*"
-                 "--abbrev=0"
-                 "HEAD")))))
+          "--match=release\*"
+          "--abbrev=0"
+          "HEAD")))))
 
 (provide 'org-version)
 
 (use-package org ; or org-plus-contrib if desired
   :init
   (setq org-startup-folded 'showall
-	org-adapt-indentation nil
-	org-src-preserve-indentation t
+    org-adapt-indentation nil
+    org-src-preserve-indentation t
     org-file-apps
-      '((auto-mode . emacs)
-          (directory . emacs)
-          ("\\.mm\\'" . default)
-          ("\\.x?html?\\'" . default)
-          ("\\.pdf\\'" . "okular %s")))
-    :config
-    (require 'org-tempo))
+    org-descriptive-links nil
+    '((auto-mode . emacs)
+       (directory . emacs)
+       ("\\.mm\\'" . default)
+       ("\\.x?html?\\'" . default)
+       ("\\.pdf\\'" . "okular %s")))
+  :config
+  (require 'org-tempo))
 
 ;;; org.el ends here
