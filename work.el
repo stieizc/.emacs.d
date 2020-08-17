@@ -6,15 +6,15 @@
 
 (use-package miyuki
   :straight (miyuki
-	     :local-repo "miyuki"
-   	     :repo "https://github.com/wenxin-wang/miyuki"
-	     :files ("miyuki.el")))
+              :local-repo "miyuki"
+              :repo "https://github.com/wenxin-wang/miyuki"
+              :files ("miyuki.el")))
 
 (use-package org-miyuki
   :straight (org-miyuki
-	     :local-repo "miyuki"
-   	     :repo "https://github.com/wenxin-wang/miyuki"
-	     :files ("org-miyuki.el"))
+              :local-repo "miyuki"
+              :repo "https://github.com/wenxin-wang/miyuki"
+              :files ("org-miyuki.el"))
   :functions (org-miyuki/ivy-list-keywords org-miyuki/insert-header org-miyuki/org-link-init)
   :config
   (with-eval-after-load 'org
@@ -23,50 +23,30 @@
     "wh" #'org-miyuki/insert-header
     "wK" #'org-miyuki/ivy-list-keywords))
 
-(use-package my:journal
-  :straight nil
+(use-package counsel-miyuki
+  :straight (counsel-miyuki
+              :local-repo "miyuki"
+              :repo "https://github.com/wenxin-wang/miyuki"
+              :files ("counsel-miyuki.el"))
+  :functions (counsel-miyuki/ag counsel-miyuki/find-file counsel-miyuki/find-all-file)
   :init
   (defun my:journal-find-file()
     (interactive)
     (with-temp-buffer
       (setq default-directory my:scratchdir)
       (counsel-find-file)))
-  (defun my:journal-find-today()
-    (interactive)
-    (find-file
-      (expand-file-name
-        (format-time-string "%Y-%m-%d.org")
-        my:scratchdir)))
   (defun my:journal-find-today-title()
     (interactive)
     (with-temp-buffer
       (setq default-directory my:scratchdir)
       (counsel-find-file (format-time-string "%Y-%m-%d-"))))
-  (defun my:journal-new-entry()
-    (interactive)
-    (my:journal-find-today)
-    (goto-char (point-max))
-    (insert
-     (format-time-string "\n%H:%M:%S ")))
-  (provide 'my:journal)
   :config
   (evil-leader/set-key
-    "wt" #'my:journal-find-today
-    "wT" #'my:journal-new-entry
-    "wf" #'my:journal-find-file
-    "wF" #'my:journal-find-today-title))
-
-(use-package counsel-miyuki
-  :straight (counsel-miyuki
-	     :local-repo "miyuki"
-   	     :repo "https://github.com/wenxin-wang/miyuki"
-	     :files ("counsel-miyuki.el"))
-  :functions (counsel-miyuki/ag counsel-miyuki/find-file counsel-miyuki/find-all-file)
-  :config
-  (evil-leader/set-key
-    "ww" #'counsel-miyuki/ag
-    "wj" #'counsel-miyuki/find-file
-    "wJ" #'counsel-miyuki/find-all-file))
+    ;; "wf" #'my:journal-find-file
+    ;; "wF" #'my:journal-find-today-title
+    "ws" #'counsel-miyuki/ag
+    "wf" #'counsel-miyuki/find-file
+    "wF" #'counsel-miyuki/find-all-file))
 
 ;; (use-package mu4e
 ;;   :straight nil
