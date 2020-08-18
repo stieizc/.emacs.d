@@ -31,12 +31,13 @@ See http://ergoemacs.org/emacs/organize_your_dot_emacs.html"
 (setq user-emacs-directory (my:fullpath-current-file))
 
 (my:load-config "package-management")
+(my:load-config-when-exists "priv-config")
 ;; load org-mode settings as early as possible
 ;; see link in org.el
-(my:load-config "org-straight")
 (my:load-config "basic-settings")
 (my:load-config "evil")
 (my:load-config "evil-hybrid-mode")
+(my:load-config "org-straight")
 (my:load-config "magit")
 (my:load-config "ivy")
 (my:load-config "projectile")

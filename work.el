@@ -29,21 +29,8 @@
               :repo "https://github.com/wenxin-wang/miyuki"
               :files ("counsel-miyuki.el"))
   :functions (counsel-miyuki/ag counsel-miyuki/find-file counsel-miyuki/find-all-file)
-  :init
-  (defun my:journal-find-file()
-    (interactive)
-    (with-temp-buffer
-      (setq default-directory my:scratchdir)
-      (counsel-find-file)))
-  (defun my:journal-find-today-title()
-    (interactive)
-    (with-temp-buffer
-      (setq default-directory my:scratchdir)
-      (counsel-find-file (format-time-string "%Y-%m-%d-"))))
   :config
   (evil-leader/set-key
-    ;; "wf" #'my:journal-find-file
-    ;; "wF" #'my:journal-find-today-title
     "ws" #'counsel-miyuki/ag
     "wf" #'counsel-miyuki/find-file
     "wF" #'counsel-miyuki/find-all-file))

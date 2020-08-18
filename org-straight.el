@@ -40,18 +40,31 @@
 
 (use-package org ; or org-plus-contrib if desired
   :init
-  (defun my:todo-file-today()
+  (defun my:scratch-find-file()
+    (interactive)
+    (with-temp-buffer
+      (setq default-directory my:scratchdir)
+      (counsel-find-file)))
+  (defun my:scratch-find-today-title()
+    (interactive)
+    (with-temp-buffer
+      (setq default-directory my:scratchdir)
+      (counsel-find-file (format-time-string "%Y-%m-%d-"))))
+  (defun my:file-today (name)
     (expand-file-name
-      (format-time-string "%Y-%m-%d-todo.org")
+      (format "%s-%s" (format-time-string "%Y-%m-%d") name)
       my:scratchdir))
+  (defun my:inbox-file-today ()
+    (my:file-today "inbox.org"))
+  (defun my:todo-file-today ()
+    (my:file-today "todo.org"))
   (defun my:journal-file-today()
-    (expand-file-name
-      (format-time-string "%Y-%m-%d-journal.org")
-      my:scratchdir))
+    (my:file-today "journal.org"))
   (defun my:reading-file-today()
-    (expand-file-name
-      (format-time-string "%Y-%m-%d-reading.org")
-      my:scratchdir))
+    (my:file-today "reading.org"))
+  (defun my:org-capture-inbox ()
+    (interactive)
+    (org-capture nil "i"))
   (defun my:org-capture-todo ()
     (interactive)
     (org-capture nil "t"))
@@ -72,7 +85,9 @@
        ("\\.x?html?\\'" . default)
        ("\\.pdf\\'" . "okular %s"))
     org-capture-templates
-    '(("t" "Task" entry (file my:todo-file-today)
+    '(("i" "Inbox" entry (file my:inbox-file-today)
+        "* %?\n  %u\n  %a\n")
+       ("t" "Task" entry (file my:todo-file-today)
         "* TODO %?\n  %u\n  %a\n")
        ("j" "Journal" entry (file my:journal-file-today)
          "* %?\n  %u\n  %a\n")
@@ -85,10 +100,14 @@
   (require 'org-protocol)
   :config
   (evil-leader/set-key
-    "wc" #'org-clock-in
-    "wC" #'org-clock-out
-    "ww" #'my:org-capture-todo
-    "we" #'my:org-capture-journal
-    "wr" #'my:org-capture-reading))
+    "cf" #'my:scratch-find-file
+    "cF" #'my:scratch-find-today-title
+    "cp" #'org-capture
+    "cc" #'org-clock-in
+    "cC" #'org-clock-out
+    "ci" #'my:org-capture-inbox
+    "cw" #'my:org-capture-todo
+    "ce" #'my:org-capture-journal
+    "cr" #'my:org-capture-reading))
 
 ;;; org.el ends here
