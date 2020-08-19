@@ -86,13 +86,13 @@
        ("\\.pdf\\'" . "okular %s"))
     org-capture-templates
     '(("i" "Inbox" entry (file my:inbox-file-today)
-        "* %?\n  %u\n  %a\n")
+        "* %?\n%a\n\n")
        ("t" "Task" entry (file my:todo-file-today)
-        "* TODO %?\n  %u\n  %a\n")
+        "* TODO %?\n%a\n\n")
        ("j" "Journal" entry (file my:journal-file-today)
-         "* %?\n  %u\n  %a\n")
+         "* %?\n%a\n\n")
        ("r" "Reading" entry (file my:reading-file-today)
-         "* %?\n")
+         "* %?\n%a\n\n")
        ("w" "Website" entry (file my:reading-file-today)
          "* %a\n%:initial\n%?")))
   :config
@@ -106,8 +106,8 @@
     "cc" #'org-clock-in
     "cC" #'org-clock-out
     "ci" #'my:org-capture-inbox
-    "cw" #'my:org-capture-todo
-    "ce" #'my:org-capture-journal
+    "ct" #'my:org-capture-todo
+    "cj" #'my:org-capture-journal
     "cr" #'my:org-capture-reading))
 
 ;;; org.el ends here
