@@ -7,8 +7,8 @@
 ;;; hledger
 
 (use-package beancount
-  :straight nil
-  :load-path ("/usr/elisp/")
+  :straight (beancount
+              :type git :repo "https://github.com/beancount/beancount-mode")
   :mode ("\\.beancount\\'" . beancount-mode))
 
 ;; (use-package hledger-mode
@@ -21,5 +21,7 @@
 ;;             (lambda ()
 ;; 	      (make-local-variable 'company-backends)
 ;; 	      (add-to-list 'company-backends 'hledger-company))))
+
+(use-package anki-editor)
 
 ;;; life.el ends here
