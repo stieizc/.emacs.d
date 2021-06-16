@@ -11,24 +11,26 @@
 ;;                     :width 'normal)
 
 ;; https://github.com/zhangjunphy/breeze/blob/master/breeze-ui.el
+(frame-monitor-attributes)
 (defun breeze--get-display-dpi ()
   "Get DPI of the display."
   (if (display-graphic-p)
-      (let ((mm-height (cadr (frame-monitor-attribute 'mm-size)))
-	    (pixel-height (nth 3 (frame-monitor-attribute 'geometry))))
-	(round (/ pixel-height (/ mm-height 25.4))))
+    (let* ((attrs (frame-monitor-attributes))
+           (mm-height (car (cddr (assoc 'mm-size attrs))))
+           (pixel-height (nth 3 (cdr (assoc 'geometry attrs)))))
+      (round (/ pixel-height (/ mm-height 25.4))))
     (error "Attempt to calculate the dpi of a non-graphic display")))
 
 (defun breeze--set-font-and-size
-    (latin-family latin-size cjk-family cjk-size)
+  (latin-family latin-size cjk-family cjk-size)
   "Font settings.
 LATIN-FAMILY: font family for latin characters.
 LATIN-SIZE: font size for latin characters.
 CJK-FAMILY: font family for CJK characters.
 CJK-SIZE: font size for CJK characters."
   (set-face-attribute
-   'default nil
-   :font (font-spec :family latin-family :size latin-size))
+    'default nil
+    :font (font-spec :family latin-family :size latin-size))
   ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
   ;;   (set-fontset-font
   ;;    t charset (font-spec :family cjk-family :size cjk-size)))
@@ -40,8 +42,8 @@ FAMILY: font family.
 SCALE: font scale."
   (let ((spec '(font-spec :family family)))
     (set-face-attribute
-     'default nil
-     :font spec)
+      'default nil
+      :font spec)
     (assq-delete-all family face-font-rescale-alist)
     (add-to-list 'face-font-rescale-alist `(,family . ,scale))))
 
@@ -50,12 +52,12 @@ SCALE: font scale."
   (interactive)
   (with-selected-frame (or frame (selected-frame))
     (if (display-graphic-p)
-	(if (>= (breeze--get-display-dpi) 120)
-	    (breeze--set-font-and-size "Sarasa Mono SC" 24 "Sarasa Mono SC" 24)
-	  ;; (breeze--set-font-and-scale "Sarasa Mono SC" 5)
-	  (breeze--set-font-and-size "Sarasa Mono SC" 19 "Sarasa Mono SC" 19)
-	  ;; (breeze--set-font-and-scale "Sarasa Mono SC" 1)
-	  ))))
+      (if (>= (breeze--get-display-dpi) 109)
+        (breeze--set-font-and-size "Sarasa Mono SC" 24 "Sarasa Mono SC" 24)
+        ;; (breeze--set-font-and-scale "Sarasa Mono SC" 5)
+        (breeze--set-font-and-size "Sarasa Mono SC" 19 "Sarasa Mono SC" 19)
+        ;; (breeze--set-font-and-scale "Sarasa Mono SC" 1)
+        ))))
 ;; (load-theme 'doom-solarized-light t)
 ;; (spaceline-compile)))
 
