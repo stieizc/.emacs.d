@@ -48,6 +48,7 @@
  ("smartparens" . "911cc896a0f2eb8b5fbdd6fc8331523ad9889a3a")
  ("straight.el" . "1e27b0590df77a5d478970ca58fd6606971692f5")
  ("string-inflection" . "c4a519be102cb99dd86be3ee8c387f008d097635")
+ ("styleguide" . "9c8784ded344f6a35d1e1550385002f613a0c788")
  ("sudo-edit" . "a7ae1713bb659988bb1465a13b837fbc2d699504")
  ("swiper" . "040d458bce4a88f37359192061bcea5ebe87007c")
  ("transient" . "b711543401dafc159943d8a703cf30fabdc78e1f")

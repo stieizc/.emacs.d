@@ -25,10 +25,12 @@
 
 ;; Clang-format
 
-(use-package clang-format
-  :straight nil
-  :load-path ("/usr/share/clang/" "/usr/local/share/clang/")
-  :commands clang-format-region)
+(use-package clang-format)
+
+(use-package google-c-style
+  :straight (google-c-style :fetcher github :repo "google/styleguide" :branch "gh-pages")
+  :demand t
+  :config (c-add-style "Google" google-c-style))
 
 ;; Flycheck
 ;; (use-package flycheck
