@@ -61,8 +61,7 @@ SCALE: font scale."
 ;; (load-theme 'doom-solarized-light t)
 ;; (spaceline-compile)))
 
-(when (daemonp)
-  (add-hook 'after-make-frame-functions #'breeze-refresh-frame)
-  (add-hook 'window-size-change-functions #'breeze-refresh-frame))
+(add-hook 'after-make-frame-functions #'breeze-refresh-frame)
+(add-hook 'window-size-change-functions #'breeze-refresh-frame)
 
 ;;; font.el ends here
