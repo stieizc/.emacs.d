@@ -280,4 +280,15 @@
 ;;; reasonml
 (use-package reason-mode)
 
+;;; bazel
+(use-package bazel
+  ;; https://github.com/bazelbuild/emacs-bazel-mode/issues/122
+  :straight (bazel :type git :host github :repo "bazelbuild/emacs-bazel-mode")
+  :custom (bazel-mode-buildifier-before-save t))
+
+;;; jsonnet
+(use-package jsonnet-mode)
+
+(use-package dockerfile-mode)
+
 ;;; lang.el ends here

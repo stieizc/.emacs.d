@@ -6,12 +6,16 @@
 
 ;; evil
 
+(use-package undo-tree)
+
 (use-package evil
   :init
   (setq evil-want-integration t ;; This is optional since it's already set to t by default.
 	evil-want-keybinding nil)
   (setq-default evil-auto-indent nil)
   :config
+  (global-undo-tree-mode)
+  (evil-set-undo-system 'undo-tree)
   (evil-mode t))
 
 ;; evil-leader
