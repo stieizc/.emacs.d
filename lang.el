@@ -33,28 +33,28 @@
   :config (c-add-style "Google" google-c-style))
 
 ;; Flycheck
-;; (use-package flycheck
-;;   :init
-;;   (add-hook 'sh-mode-hook 'flycheck-mode)
-;;   :config
-;;   ;; for ccls
-;;   (setq-default
-;;    flycheck-disabled-checkers
-;;    '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-;;   (evil-leader/set-key
-;;     "el" #'flycheck-list-errors
-;;     "en" #'next-error
-;;     "ep" #'previous-error))
-;;   ;; (global-flycheck-mode)) It's annoyting sometimes
+(use-package flycheck
+  :init
+  (add-hook 'sh-mode-hook 'flycheck-mode)
+  :config
+  ;; for ccls
+  ;; (setq-default
+  ;;  flycheck-disabled-checkers
+  ;;  '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  (evil-leader/set-key
+    "el" #'flycheck-list-errors
+    "en" #'next-error
+    "ep" #'previous-error))
+;; (global-flycheck-mode)) It's annoyting sometimes
 
 ;; Flymake
-;; (use-package flymake
-;;   :config
-;;   (evil-leader/set-key
-;;     "el" #'flymake-show-diagnostic
-;;     "en" #'flymake-goto-next-error
-;;     "ep" #'flymake-goto-prev-error
-;;     "ed" #'flymake-goto-diagnostic))
+(use-package flymake
+  :config
+  (evil-leader/set-key
+    "el" #'flymake-show-diagnostic
+    "en" #'flymake-goto-next-error
+    "ep" #'flymake-goto-prev-error
+    "ed" #'flymake-goto-diagnostic))
 
 ;;; Company
 (use-package company
@@ -71,35 +71,36 @@
   (yas-global-mode 1))
 
 ;;; lsp-mode
-;; (use-package lsp-mode
-;;   :commands lsp
-;;   :init
-;;   (setq lsp-prefer-flymake nil
-;; 	;; lsp-ui-doc-mode nil
-;; 	;; lsp-print-io t ; for debug
-;; 	lsp-ui-doc-max-width 40
-;; 	lsp-ui-sideline-show-symbol t
-;; 	lsp-ui-sideline-show-hover nil
-;; 	;; lsp-ui-doc-include-signature t
-;; 	;; lsp-ui-sideline-enable nil
-;;   :config
-;;   (evil-leader/set-key
-;;     "gd" #'lsp-find-definition
-;;     "gc" #'ccls-call-hierarchy
-;;     "gm" #'ccls-member-hierarchy
-;;     "th" #'lsp-ui-sideline-toggle-symbols-info))
-;; 
-;; (use-package lsp-ui
-;;   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
-;;   :commands lsp-ui-mode
-;;   :init
-;;   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
-;;   (setq lsp-ui-peek-always-show t)
-;;   :config
-;;   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-;;   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-;;   (evil-leader/set-key
-;;     "td" #'lsp-ui-doc-mode))
+(use-package lsp-mode
+  :commands lsp
+  :init
+  (setq
+    lsp-prefer-flymake nil
+    ;; lsp-ui-doc-mode nil
+    ;; lsp-print-io t ; for debug
+    lsp-ui-doc-max-width 40
+    lsp-ui-sideline-show-symbol t
+    lsp-ui-sideline-show-hover nil)
+  ;; lsp-ui-doc-include-signature t
+  ;; lsp-ui-sideline-enable nil
+  :config
+  (evil-leader/set-key
+    "gd" #'lsp-find-definition
+    ;; "gc" #'ccls-call-hierarchy
+    ;; "gm" #'ccls-member-hierarchy
+    "th" #'lsp-ui-sideline-toggle-symbols-info))
+
+(use-package lsp-ui
+  ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
+  :commands lsp-ui-mode
+  :init
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+  (setq lsp-ui-peek-always-show t)
+  :config
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (evil-leader/set-key
+    "td" #'lsp-ui-doc-mode))
 ;;
 ;; (use-package dap-mode
 ;;   :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
@@ -134,9 +135,9 @@
 (defun my:c-common-hook ()
   ;; (require 'ccls)
   (setq electric-indent-mode -1)
-  ;; (lsp)
-  ;; (flycheck-mode)
-  ;; (flymake-mode)
+  (lsp)
+  (flycheck-mode)
+  (flymake-mode)
   ;; (require 'dap-lldb)
   ;; (my:dap-mode)
   ;; (ccls-code-lens-mode)
@@ -147,7 +148,7 @@
 ;; (defun my:ccls-tree-mode-hook ()
 ;;   (turn-off-evil-mode))
 ;;
-;; (add-hook 'c-mode-common-hook #'my:c-common-hook)
+(add-hook 'c-mode-common-hook #'my:c-common-hook)
 ;; (add-hook 'ccls-tree-mode-hook #'my:ccls-tree-mode-hook)
 
 ;;; - Python
@@ -174,12 +175,12 @@
 (defun er:remove-elc-on-save ()
   "If you're saving an Emacs Lisp file, likely the .elc is no longer valid."
   (add-hook
-   'after-save-hook
-   #'(lambda ()
-     (if (file-exists-p (concat buffer-file-name "c"))
-	 (delete-file (concat buffer-file-name "c"))))
-   nil
-   t))
+    'after-save-hook
+    #'(lambda ()
+        (if (file-exists-p (concat buffer-file-name "c"))
+          (delete-file (concat buffer-file-name "c"))))
+    nil
+    t))
 
 (defun my:elisp-mode-hook ()
   (er:remove-elc-on-save))
@@ -207,13 +208,13 @@
   :straight auctex
   :init
   (setq ; TeX-command-default latex-build-command
-	TeX-auto-save t
-	TeX-parse-self t
-	TeX-syntactic-comment t
-	;; Synctex support
-	TeX-source-correlate-start-server nil
-	;; Don't insert line-break at inline math
-	LaTeX-fill-break-at-separators nil))
+    TeX-auto-save t
+    TeX-parse-self t
+    TeX-syntactic-comment t
+    ;; Synctex support
+    TeX-source-correlate-start-server nil
+    ;; Don't insert line-break at inline math
+    LaTeX-fill-break-at-separators nil))
 
 ;;; Java
 
