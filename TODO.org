@@ -48,3 +48,7 @@
 
 - Swiper unifiy yank with isearch
   - how spacemacs '#' works: a hydra mode
+
+* Scratches
+
+- [X] deft

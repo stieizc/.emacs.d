@@ -91,4 +91,12 @@
   :config
   (add-hook 'org-mode-hook 'org-zotxt-mode))
 
+(use-package deft
+  :config
+  (setq deft-directory my:scratchdir)
+  (evil-define-key 'normal deft-mode-map
+    "q" #'kill-buffer)
+  (evil-leader/set-key
+    "cf" #'deft))
+
 ;;; work.el ends here

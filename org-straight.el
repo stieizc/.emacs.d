@@ -13,11 +13,6 @@
 (use-package org ; or org-plus-contrib if desired
   :straight (:host github :repo "bzg/org-mode")
   :init
-  (defun my:scratch-find-file()
-    (interactive)
-    (with-temp-buffer
-      (setq default-directory my:scratchdir)
-      (counsel-find-file)))
   (defun my:scratch-find-today-title()
     (interactive)
     (with-temp-buffer
@@ -47,7 +42,8 @@
   (defun my:org-capture-reading ()
     (interactive)
     (org-capture nil "r"))
-  (setq org-startup-folded 'showall
+  (setq
+    org-startup-folded 'showall
     org-adapt-indentation nil
     org-src-preserve-indentation t
     org-link-descriptive nil
@@ -61,7 +57,7 @@
     '(("i" "Inbox" entry (file my:inbox-file-today)
         "* %?\n%a\n\n")
        ("t" "Task" entry (file my:todo-file-today)
-        "* TODO %?\n%a\n\n")
+         "* TODO %?\n%a\n\n")
        ("j" "Journal" entry (file my:journal-file-today)
          "* %?\n%a\n\n")
        ("r" "Reading" entry (file my:reading-file-today)
@@ -73,7 +69,6 @@
   (require 'org-protocol)
   :config
   (evil-leader/set-key
-    "cf" #'my:scratch-find-file
     "cF" #'my:scratch-find-today-title
     "cp" #'org-capture
     "cc" #'org-clock-in
