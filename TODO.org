@@ -41,8 +41,7 @@
 
 * Completion
 
-- [X] ivy
-  - [X] history
+- vertico
 
 * Search
 
@@ -52,3 +51,7 @@
 * Scratches
 
 - [X] deft
+
+* Notes
+
+- org-roam
