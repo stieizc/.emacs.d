@@ -93,7 +93,9 @@
 
 (use-package deft
   :config
-  (setq deft-directory my:scratchdir)
+  (setq
+    deft-directory my:scratchdir
+    deft-recursive t)
   (evil-define-key 'normal deft-mode-map
     "q" #'kill-buffer)
   (evil-leader/set-key
