@@ -47,6 +47,10 @@
 ;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
 ;;                          ("melpa" . "http://melpa.org/packages/")))
 
+;;; 4. setup no-littering as early as possible
+;; https://github.com/emacscollective/no-littering
+(use-package no-littering)
+
 ;;; Done setup use-package
 
 ;;; package-management.el ends here

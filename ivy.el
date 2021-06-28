@@ -31,7 +31,7 @@
 
 (use-package prescient
   :init
-  (setq prescient-save-file (expand-file-name "var/prescient-save.el" my:cache-dir))
+  ; (setq prescient-save-file (expand-file-name "var/prescient-save.el" my:cache-dir))
   :config
   (prescient-persist-mode))
 

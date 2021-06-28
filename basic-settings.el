@@ -12,7 +12,7 @@
 ;;; - Performance
 (setq
   idle-update-delay 2                    ; update ui less often
-  gc-cons-percentage 0.3)                ;increase garbage collection limit
+  gc-cons-percentage 0.3)                ; increase garbage collection limit
 
 ;;; - Startup
 
@@ -25,20 +25,14 @@
  debug-on-error (and (not noninteractive) my:debug-mode)
  initial-buffer-choice my:todo)
 
-(defvar my:cache-dir (expand-file-name ".cache/" user-emacs-directory))
-
 ;;; - Autosave
-(defvar my:autosave-dir (expand-file-name "auto-save/" my:cache-dir))
-(make-directory my:autosave-dir t)
-(setq
- backup-directory-alist `((".*" . ,my:autosave-dir)) ;don't clutter my fs and put backups into tmp
- auto-save-file-name-transforms `((".*" ,my:autosave-dir t))
- recentf-save-file (expand-file-name "recentf" my:cache-dir)
- ;; savehist-additional-variables '(kill-ring search-ring regexp-search-ring)
- savehist-additional-variables '(search-ring regexp-search-ring)
- savehist-file (expand-file-name "savehist" my:cache-dir))
-
-(savehist-mode 1)
+(use-package savehist
+  :init
+  (savehist-mode 1)
+  :config
+  (setq
+    ;; savehist-additional-variables '(kill-ring search-ring regexp-search-ring)
+    savehist-additional-variables '(search-ring regexp-search-ring)))
 
 ;;; - Basic editing habit
 (setq
@@ -59,7 +53,7 @@
 
 (show-paren-mode t)
 
-(setq save-place-file (expand-file-name "places" my:cache-dir))
+; (setq save-place-file (expand-file-name "places" my:cache-dir))
 (save-place-mode t)
 
 ;; narrow to region should be enabled by default

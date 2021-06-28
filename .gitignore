@@ -15,6 +15,7 @@ image-dired/
 /games/
 /request/
 
+/var/
 /.cache/
 /auto-save-list/
 /straight/*

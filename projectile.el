@@ -7,9 +7,7 @@
 (use-package projectile
   :diminish projectile-mode
   :init
-  (setq projectile-known-projects-file
-	(expand-file-name "projectile-bookmarks.eld" my:cache-dir)
-	projectile-enable-caching t))
+  (setq projectile-enable-caching t))
 
 (use-package counsel-projectile
   :config

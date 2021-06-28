@@ -45,11 +45,9 @@
     "l" #'evil-forward-char))
 
 (use-package undo-tree
+  :diminish undo-tree-mode
   :config
-  (setq undo-tree-auto-save-history t
-	undo-tree-history-directory-alist
-	`((".*" . ,(expand-file-name "undo-tree-history" my:cache-dir))))
-  :diminish undo-tree-mode)
+  (setq undo-tree-auto-save-history t))
 
 (use-package evil-matchit
  :config

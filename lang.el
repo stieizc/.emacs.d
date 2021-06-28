@@ -82,7 +82,6 @@
 ;; 	lsp-ui-sideline-show-hover nil
 ;; 	;; lsp-ui-doc-include-signature t
 ;; 	;; lsp-ui-sideline-enable nil
-;; 	lsp-session-file (expand-file-name ".lsp-session-v1" my:cache-dir))
 ;;   :config
 ;;   (evil-leader/set-key
 ;;     "gd" #'lsp-find-definition
@@ -101,17 +100,16 @@
 ;;   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 ;;   (evil-leader/set-key
 ;;     "td" #'lsp-ui-doc-mode))
-;; 
+;;
 ;; (use-package dap-mode
 ;;   :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
 ;; 		      :fork (:repo "git@github.com:wenxin-wang/dap-mode"))
 ;;   :commands (dap-mode dap-ui-mode)
 ;;   :init
-;;   (setq dap--breakpoints-file (expand-file-name ".dap-breakpoints" my:cache-dir))
 ;;   (defun my:dap-mode ()
 ;;     (dap-mode 1)
 ;;     (dap-ui-mode 1)))
-;; 
+;;
 ;; ;;; company
 ;; (use-package company-lsp
 ;;   :requires company
