@@ -120,7 +120,7 @@
 (blink-cursor-mode -1)       ;no cursor blinking
 (tool-bar-mode -1)
 (menu-bar-mode -1)           ;no menu, you can toggle it with C-c m
-;; (scroll-bar-mode -1)         ;disable the sroll bar
+(scroll-bar-mode -1)         ;disable the sroll bar
 
 ;; disable full `yes' or `no' answers, `y' and `n' suffices
 (defalias 'yes-or-no-p 'y-or-n-p)

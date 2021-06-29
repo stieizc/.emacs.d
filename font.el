@@ -12,6 +12,7 @@
 
 ;; https://github.com/zhangjunphy/breeze/blob/master/breeze-ui.el
 (frame-monitor-attributes)
+
 (defun breeze--get-display-dpi ()
   "Get DPI of the display."
   (if (display-graphic-p)
