@@ -14,49 +14,51 @@
 ;; https://github.com/domtronn/all-the-icons.el
 (use-package all-the-icons)
 
-;; https://github.com/jaypei/emacs-neotree
-(use-package neotree
-  :init
-  ;; (setq neo-autorefresh nil)
+;; https://github.com/Alexander-Miller/treemacs
+(use-package treemacs
+  :ensure t
+  ;; :init
+  ;; (with-eval-after-load 'winum
+  ;;   (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
-  (setq projectile-switch-project-action 'neotree-projectile-action)
-  (defun neotree-project-dir-toggle ()
-    "Open NeoTree using the project root, using find-file-in-project,
-or the current buffer directory."
-    (interactive)
-    (if (neo-global--window-exists-p)
-      (neotree-hide)
-      (progn
-        (ignore-errors
-          (neotree-dir (projectile-project-root)))
-        (neotree-show))))
-  (defun neotree-project-dir-toggle-no-focus ()
-    "neotree-project-dir-toggle without loosing focus on current buffer"
-    (interactive)
-    (save-selected-window (neotree-project-dir-toggle)))
-  ;; projectile support
-  (defun neotree-refresh (&optional is-auto-refresh)
-    "Refresh the NeoTree buffer."
-    (interactive)
-    (if (eq (current-buffer) (neo-global--get-buffer))
-      (neo-buffer--refresh t)
-      (save-excursion
-        (let ((cw (selected-window)))  ;; save current window
-          (if is-auto-refresh
-            (let ((origin-buffer-file-name (buffer-file-name)))
-              (when (and (fboundp 'projectile-project-p)
-                      (projectile-project-p)
-                      (fboundp 'projectile-project-root))
-                (neo-global--open-dir (projectile-project-root))
-                (neotree-find (projectile-project-root)))
-              (neotree-find origin-buffer-file-name))
-            (neo-buffer--refresh t t))
-          (recenter)
-          (when (or is-auto-refresh neo-toggle-window-keep-p)
-            (select-window cw))))))
+  (progn
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
   (evil-leader/set-key
-    "tt" #'neotree-project-dir-toggle-no-focus
-    "to" #'neotree-project-dir-toggle))
+    "tt" #'treemacs-select-window
+    "tT" #'treemacs
+    "tf" #'treemacs-find-file))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after (treemacs dired)
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-all-the-icons
+  :after (treemacs all-the-icons)
+  :ensure t)
 
 ;; https://github.com/hlissner/emacs-doom-themes/
 (use-package doom-themes

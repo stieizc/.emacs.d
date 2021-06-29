@@ -27,13 +27,12 @@
 * project management
 
 - [X] projectile
-- [X] neotree for current directory/project
-  - neotree-refresh uses timer. a buffer switching hook (if exists) would be more proper
+- [X] treemacs for current directory/project
 
 * eye candy
 
 - [X] font
-- powerline
+- [X] powerline
 
 * Window management
 
