@@ -5,14 +5,16 @@
 ;;; Code:
 
 ;; which-key
-
+;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :diminish which-key-mode
   :config
   (which-key-mode))
 
+;; https://github.com/domtronn/all-the-icons.el
 (use-package all-the-icons)
 
+;; https://github.com/jaypei/emacs-neotree
 (use-package neotree
   :init
   ;; (setq neo-autorefresh nil)
@@ -56,6 +58,7 @@ or the current buffer directory."
     "tt" #'neotree-project-dir-toggle-no-focus
     "to" #'neotree-project-dir-toggle))
 
+;; https://github.com/hlissner/emacs-doom-themes/
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -63,5 +66,16 @@ or the current buffer directory."
   (load-theme 'doom-one t)
   (doom-themes-neotree-config)
   (doom-themes-org-config))
+
+;; https://github.com/TheBB/spaceline
+(use-package spaceline)
+
+;; https://github.com/domtronn/spaceline-all-the-icons.el
+(use-package spaceline-all-the-icons
+  :after spaceline
+  :config
+  (spaceline-all-the-icons-theme)
+  (spaceline-all-the-icons--setup-git-ahead)
+  (spaceline-all-the-icons--setup-neotree))
 
 ;;; ui.el ends here
