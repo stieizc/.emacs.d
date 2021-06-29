@@ -1,7 +1,8 @@
 default: init-packages
 
 init-packages:
-	emacs -Q --batch -l init.el
+	emacs -Q --batch -l init.el \
+		--eval "(all-the-icons-install-fonts t)"
 
 freeze:
 	emacs -Q --batch -l init.el \
