@@ -13,6 +13,9 @@
 (use-package org ; or org-plus-contrib if desired
   :straight (:host github :repo "bzg/org-mode")
   :init
+  (defun my:scratch-todo()
+    (interactive)
+    (find-file (expand-file-name "todo.org" my:scratchdir)))
   (defun my:scratch-find-today-title()
     (interactive)
     (with-temp-buffer
@@ -74,7 +77,8 @@
     "cc" #'org-clock-in
     "cC" #'org-clock-out
     "ci" #'my:org-capture-inbox
-    "ct" #'my:org-capture-todo
+    "ct" #'my:scratch-todo
+    "cT" #'my:org-capture-todo
     "cj" #'my:org-capture-journal
     "cr" #'my:org-capture-reading))
 

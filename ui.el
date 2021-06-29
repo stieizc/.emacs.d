@@ -78,4 +78,16 @@ or the current buffer directory."
   (spaceline-all-the-icons--setup-git-ahead)
   (spaceline-all-the-icons--setup-neotree))
 
+;; https://github.com/emacs-dashboard/emacs-dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-items '((recents . 10)
+                           (bookmarks . 5)
+                           (projects . 5)
+                           (agenda . 5)
+                           (registers . 5)))
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
+
 ;;; ui.el ends here
