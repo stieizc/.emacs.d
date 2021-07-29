@@ -71,54 +71,54 @@
   (yas-global-mode 1))
 
 ;;; lsp-mode
-(use-package lsp-mode
-  :commands lsp
-  :init
-  (setq
-    lsp-modeline-code-actions-mode t
-    lsp-clients-clangd-args '("-log=verbose")
-    lsp-prefer-flymake nil)
-  :config
-  (evil-leader/set-key
-    "ga" #'lsp-execute-code-action
-    "gD" #'lsp-find-definition
-    "gR" #'lsp-find-references))
+;; (use-package lsp-mode
+;;   :commands lsp
+;;   :init
+;;   (setq
+;;     lsp-modeline-code-actions-mode t
+;;     lsp-clients-clangd-args '("-log=verbose")
+;;     lsp-prefer-flymake nil)
+;;   :config
+;;   (evil-leader/set-key
+;;     "ga" #'lsp-execute-code-action
+;;     "gD" #'lsp-find-definition
+;;     "gR" #'lsp-find-references))
     ;; "gc" #'ccls-call-hierarchy
     ;; "gm" #'ccls-member-hierarchy
 
-(use-package lsp-ui
-  ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
-  :commands lsp-ui-mode
-  :init
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
-  (setq
-    lsp-ui-doc-enable nil
-    lsp-ui-sideline-show-hover nil)
-    ;; lsp-ui-peek-always-show t
-    ;; lsp-print-io t ; for debug
-    ;; lsp-ui-sideline-show-symbol t
-  ;; (load-theme 'doom-solarized-light t)
-  ;; (spaceline-compile)))
-  (defun my:lsp-ui-refresh (&optional frame)
-    "Refresh frame settings for lsp."
-    (interactive)
-    (with-selected-frame (or frame (selected-frame))
-      (if (display-graphic-p)
-        (if (>= (breeze--get-display-dpi) 109)
-          (setq lsp-ui-doc-max-width 100)
-          (setq lsp-ui-doc-max-width 50)))))
-  (add-hook 'after-make-frame-functions #'my:lsp-ui-refresh)
-  (add-hook 'window-size-change-functions #'my:lsp-ui-refresh)
-  ;; lsp-ui-doc-include-signature t
-  ;; lsp-ui-sideline-enable nil)
-  :config
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (evil-leader/set-key
-    "gd" #'lsp-ui-peek-find-definitions
-    "gr" #'lsp-ui-peek-find-references
-    "th" #'lsp-ui-sideline-toggle-symbols-info
-    "td" #'lsp-ui-doc-mode))
+;; (use-package lsp-ui
+;;   ;; :hook lsp-mode seems to add a hook called lsp-ui, not lsp-ui-mode
+;;   :commands lsp-ui-mode
+;;   :init
+;;   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+;;   (setq
+;;     lsp-ui-doc-enable nil
+;;     lsp-ui-sideline-show-hover nil)
+;;     ;; lsp-ui-peek-always-show t
+;;     ;; lsp-print-io t ; for debug
+;;     ;; lsp-ui-sideline-show-symbol t
+;;   ;; (load-theme 'doom-solarized-light t)
+;;   ;; (spaceline-compile)))
+;;   (defun my:lsp-ui-refresh (&optional frame)
+;;     "Refresh frame settings for lsp."
+;;     (interactive)
+;;     (with-selected-frame (or frame (selected-frame))
+;;       (if (display-graphic-p)
+;;         (if (>= (breeze--get-display-dpi) 109)
+;;           (setq lsp-ui-doc-max-width 100)
+;;           (setq lsp-ui-doc-max-width 50)))))
+;;   (add-hook 'after-make-frame-functions #'my:lsp-ui-refresh)
+;;   (add-hook 'window-size-change-functions #'my:lsp-ui-refresh)
+;;   ;; lsp-ui-doc-include-signature t
+;;   ;; lsp-ui-sideline-enable nil)
+;;   :config
+;;   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+;;   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+;;   (evil-leader/set-key
+;;     "gd" #'lsp-ui-peek-find-definitions
+;;     "gr" #'lsp-ui-peek-find-references
+;;     "th" #'lsp-ui-sideline-toggle-symbols-info
+;;     "td" #'lsp-ui-doc-mode))
 ;;
 ;; (use-package dap-mode
 ;;   :straight (dap-mode :type git :repo "https://github.com/yyoncho/dap-mode"
@@ -153,9 +153,9 @@
 (defun my:c-common-hook ()
   ;; (require 'ccls)
   (setq electric-indent-mode -1)
-  (lsp)
-  (flycheck-mode)
-  (flymake-mode)
+  ;; (lsp)
+  ;; (flycheck-mode)
+  ;; (flymake-mode)
   ;; (require 'dap-lldb)
   ;; (my:dap-mode)
   ;; (ccls-code-lens-mode)
