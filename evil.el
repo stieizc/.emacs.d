@@ -6,15 +6,17 @@
 
 ;; evil
 
-(use-package undo-tree)
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 
 (use-package evil
+  :after undo-tree
   :init
   (setq evil-want-integration t ;; This is optional since it's already set to t by default.
     evil-want-keybinding nil)
   (setq-default evil-auto-indent nil)
   :config
-  (global-undo-tree-mode)
   (evil-set-undo-system 'undo-tree))
 
 ;; evil-leader
@@ -22,6 +24,7 @@
 ;; https://github.com/jiegec/emacs.d/blob/master/lisp/init-evil.el
 
 (use-package evil-leader
+  :after evil
   :config
   (global-evil-leader-mode t)
   (evil-mode t)
