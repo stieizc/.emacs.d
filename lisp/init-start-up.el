@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defvar my:scratchdir (expand-file-name "~/zscratchpad/"))
-(defvar my:todo (expand-file-name "~/zscratchpad/todo.org"))
+(require 'config-path)
 
 (setq
   inhibit-startup-message t
