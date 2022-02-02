@@ -2,9 +2,9 @@
 
 ;;; - Parens matching
 (setq
-  column-number-mode t
-  ;; show the paren immediately
-  show-paren-delay 0)
+ column-number-mode t
+ ;; show the paren immediately
+ show-paren-delay 0)
 
 (show-paren-mode t)
 
@@ -13,15 +13,15 @@
 
 ;;; - Window management
 (setq
-  ;; less likely to split vertically
-  split-height-threshold 110
-  ;; split horizontally only if less than 160 columns
-  ;; split-width-threshold 160
-  ;; fringe markers (on the left side)
-  indicate-buffer-boundaries 'left
-  enable-recursive-minibuffers t
-  ;; this allows operating on the same buffer in diff. positions
-  switch-to-buffer-preserve-window-point t)
+ ;; less likely to split vertically
+ split-height-threshold 110
+ ;; split horizontally only if less than 160 columns
+ ;; split-width-threshold 160
+ ;; fringe markers (on the left side)
+ indicate-buffer-boundaries 'left
+ enable-recursive-minibuffers t
+ ;; this allows operating on the same buffer in diff. positions
+ switch-to-buffer-preserve-window-point t)
 
 (minibuffer-depth-indicate-mode t)
 
@@ -31,10 +31,10 @@
 ;; https://github.com/noctuid/evil-guide#how-can-i-have-relative-line-numbers
 ;; https://www.emacswiki.org/emacs/LineNumbers
 (setq-default
-  display-line-numbers t
-  display-line-numbers-widen t
-  ;; this is the default
-  display-line-numbers-current-absolute t)
+ display-line-numbers t
+ display-line-numbers-widen t
+ ;; this is the default
+ display-line-numbers-current-absolute t)
 
 (defun my:line-numbers-relative ()
   (setq-local display-line-numbers 'visual))
@@ -46,13 +46,13 @@
 (add-hook 'evil-insert-state-exit-hook #'my:line-numbers-absolute)
 
 (setq-default
-  show-trailing-whitespace t)
+ show-trailing-whitespace t)
 
 ;; display the time in the mode-line
 (setq
-  display-time-24hr-format t
-  display-time-default-load-average nil
-  display-time-use-mail-icon t)
+ display-time-24hr-format t
+ display-time-default-load-average nil
+ display-time-use-mail-icon t)
 
 (display-time)
 

@@ -11,14 +11,14 @@
 (use-package evil
   :init
   (setq
-    ;; for evil-collection
-    evil-want-integration t
-    ;; for evil-collection
-    evil-want-keybinding nil
-    ;; hybrid-mode from spacemacs, use emacs bindings in insert-mode
-    evil-disable-insert-state-bindings t)
+   ;; for evil-collection
+   evil-want-integration t
+   ;; for evil-collection
+   evil-want-keybinding nil
+   ;; hybrid-mode from spacemacs, use emacs bindings in insert-mode
+   evil-disable-insert-state-bindings t)
   (setq-default
-    evil-auto-indent nil)
+   evil-auto-indent nil)
   :config
   (evil-set-undo-system 'undo-tree)
   (use-package evil-collection
