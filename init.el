@@ -25,6 +25,7 @@
 (require 'init-basic-editing)
 (require 'init-ui)
 (require 'init-fonts)
+(require 'init-orgmode)
 
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))

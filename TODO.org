@@ -1,6 +1,18 @@
-* init manage
+* org-roam
 
-- [X] move recentf to .cache
+https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+
+* key bindings
+
+* smart parens
+
+https://github.com/Fuco1/smartparens
+
+https://github.com/luxbock/evil-cleverparens
+
+* Completion
+
+https://github.com/minad/vertico
 
 * c/c++
 
