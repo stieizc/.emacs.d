@@ -9,6 +9,7 @@
   (global-undo-tree-mode))
 
 (use-package evil
+  :ensure t
   :init
   (setq
    ;; for evil-collection
@@ -21,13 +22,16 @@
    evil-auto-indent nil)
   :config
   (evil-set-undo-system 'undo-tree)
-  (use-package evil-collection
-    :config
-    (evil-collection-init)
-    (evil-collection-define-key 'normal 'Info-mode-map
-      "h" #'evil-backward-char
-      "l" #'evil-forward-char))
   (evil-mode t))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)
+  (evil-collection-define-key 'normal 'Info-mode-map
+    "h" #'evil-backward-char
+    "l" #'evil-forward-char))
 
 (use-package general)
 
