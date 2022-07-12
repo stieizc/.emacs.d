@@ -9,7 +9,6 @@
   (global-undo-tree-mode))
 
 (use-package evil
-  :ensure t
   :init
   (setq
    ;; for evil-collection
@@ -51,9 +50,9 @@
 ;;     "z+" #'text-scale-adjust
 ;;     "z0" #'text-scale-adjust))
 
-(use-package evil-matchit
-  :config
-  (global-evil-matchit-mode 1))
+;; (use-package evil-matchit
+;;   :config
+;;   (global-evil-matchit-mode 1))
 
 (use-package hydra)
 
