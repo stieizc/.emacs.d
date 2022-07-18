@@ -25,14 +25,32 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :config
   (evil-collection-init)
   (evil-collection-define-key 'normal 'Info-mode-map
     "h" #'evil-backward-char
     "l" #'evil-forward-char))
 
-(use-package general)
+(use-package evil-matchit
+  :after evil
+  :config
+  (global-evil-matchit-mode 1))
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package general
+  :after '(evil which-key)
+  :config
+  (general-define-key
+   :states '(normal visual insert emacs)
+   :prefix "SPC"
+   :non-normal-prefix "M-SPC"
+
+   ;; simple command
+   "TAB" '(switch-to-other-buffer :which-key "prev buffer")
+   "SPC" '(save-buffer :which-key "save buffer")))
 
 ;; (use-package evil-leader
 ;;   :after evil
@@ -49,10 +67,6 @@
 ;;     "z-" #'text-scale-adjust
 ;;     "z+" #'text-scale-adjust
 ;;     "z0" #'text-scale-adjust))
-
-;; (use-package evil-matchit
-;;   :config
-;;   (global-evil-matchit-mode 1))
 
 (use-package hydra)
 

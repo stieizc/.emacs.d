@@ -14,7 +14,7 @@
 (require 'init-package-management)
 (require 'init-start-up)
 (require 'init-debug)
-(require 'init-evil)
+(require 'init-movements)
 ;; (require 'init-basic-editing)
 ;; (require 'init-ui)
 ;; (require 'init-fonts)
