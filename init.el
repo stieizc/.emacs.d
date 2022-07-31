@@ -106,15 +106,21 @@
 
 (use-package general
   :config
+  (general-create-definer my:space-file-leader-def
+    :prefix-command 'my:space-file-leader-command
+    :prefix-map 'my:space-file-leader-map)
+  (my:space-file-leader-def
+   "f" '(find-file :which-key "open a file"))
   (general-create-definer my:space-leader-def
    :states '(normal visual insert emacs)
    :prefix "SPC"
    :non-normal-prefix "M-SPC"
-   :prefix-map 'my:global-prefix-map)
+   :prefix-map 'my:space-leader-map)
   (my:space-leader-def
-   ;; simple command
-   "TAB" '(switch-to-other-buffer :which-key "prev buffer")
-   "SPC" '(save-buffer :which-key "save buffer")))
+    ;; simple command
+    "TAB" '(switch-to-other-buffer :which-key "prev buffer")
+    "SPC" '(save-buffer :which-key "save buffer")
+    "f" '(my:space-file-leader-command :which-key "file commands")))
 
 ;; (use-package evil-leader
 ;;   :after evil
