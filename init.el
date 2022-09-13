@@ -25,6 +25,9 @@
  load-prefer-newer t
  initial-buffer-choice my:todo)
 
+;; TODO: benchmark init.
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-benchmarking.el
+
 ;;; Section: Package management base.
 ;; Setup straight.el & use-package for package management.
 
