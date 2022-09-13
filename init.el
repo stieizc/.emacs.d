@@ -109,22 +109,28 @@
   (general-create-definer my:space-file-leader-def
     :prefix-command 'my:space-file-leader-command
     :prefix-map 'my:space-file-leader-map)
-  (my:space-file-leader-def
-   "f" '(find-file :which-key "open a file"))
   (general-create-definer my:space-buffer-leader-def
     :prefix-command 'my:space-buffer-leader-command
     :prefix-map 'my:space-buffer-leader-map)
+  (general-create-definer my:space-exit-leader-def
+    :prefix-command 'my:space-exit-leader-command
+    :prefix-map 'my:space-exit-leader-map)
   (general-create-definer my:space-leader-def
    :states '(normal visual insert emacs)
    :prefix "SPC"
    :non-normal-prefix "M-SPC"
    :prefix-map 'my:space-leader-map)
+  (my:space-file-leader-def
+   "f" '(find-file :which-key "open a file"))
+  (my:space-exit-leader-def
+   "q" '(save-buffers-kill-terminal :which-key "kill current window"))
   (my:space-leader-def
     ;; simple command
     "TAB" '(switch-to-other-buffer :which-key "prev buffer")
     "SPC" '(save-buffer :which-key "save buffer")
     "f" '(my:space-file-leader-command :which-key "file commands")
-    "b" '(my:space-buffer-leader-command :which-key "buffer commands")))
+    "b" '(my:space-buffer-leader-command :which-key "buffer commands")
+    "q" '(my:space-exit-leader-command :which-key "exit commands")))
 
 ;; (use-package evil-leader
 ;;   :after evil
