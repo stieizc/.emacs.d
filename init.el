@@ -118,6 +118,9 @@
   (general-create-definer my:space-exit-leader-def
     :prefix-command 'my:space-exit-leader-command
     :prefix-map 'my:space-exit-leader-map)
+  (general-create-definer my:space-vc-leader-def
+    :prefix-command 'my:space-vc-leader-command
+    :prefix-map 'my:space-vc-leader-map)
   (general-create-definer my:space-leader-def
    :states '(normal visual insert emacs)
    :prefix "SPC"
@@ -133,6 +136,7 @@
     "SPC" '(save-buffer :which-key "save buffer")
     "f" '(my:space-file-leader-command :which-key "file commands")
     "b" '(my:space-buffer-leader-command :which-key "buffer commands")
+    "g" '(my:space-vc-leader-command :which-key "version control commands")
     "q" '(my:space-exit-leader-command :which-key "exit commands")))
 
 ;; (use-package evil-leader
@@ -366,6 +370,13 @@
 (use-package savehist
   :init
   (savehist-mode))
+
+;;; Section: Version control.
+
+(use-package magit
+  :general
+  (my:space-vc-leader-def "g" 'magit-status)
+  (my:space-vc-leader-def "b" 'magit-blame))
 
 ;;; Section: Debug utilities.
 
