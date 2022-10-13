@@ -166,6 +166,7 @@
   :ensure t
   :config
   (vertico-mode)
+  (recentf-mode)
   (setq
    vertico-resize t
    vertico-cycle t))
