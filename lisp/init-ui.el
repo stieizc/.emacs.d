@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; Section: UI settings.
+;;; TODO: tidy things up.
+
+(require 'init-packaging)
+
 ;;; - Parens matching
 (setq
  column-number-mode t
@@ -9,7 +14,8 @@
 (show-paren-mode t)
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :diminish rainbow-delimiters-mode)
 
 ;;; - Window management
 (setq

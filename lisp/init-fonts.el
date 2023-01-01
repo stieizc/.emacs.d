@@ -1,8 +1,7 @@
-;;; font --- font and friends
+;;; -*- lexical-binding: t; -*-
 
-;;; Commentary:
-
-;;; Code:
+;;; Section: Fonts.
+;;; Fonts and friends.
 
 ;; (set-face-attribute 'default nil
 ;;                     :family "Source Code Pro"

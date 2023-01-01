@@ -1,7 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; Section: Knowledge Base.
+;; Org-mode and friends.
+
+(require 'init-packaging)
+
 (use-package org
-  :straight nil
   :init
   (setq
    ;; Without this org mode will add indentation
@@ -11,4 +15,6 @@
   :config
   (require 'org-tempo))
 
-(provide 'init-orgmode)
+(use-package org-roam)
+
+(provide 'init-knowledge)

@@ -1,13 +1,19 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; Section: On editing.
+
+(require 'init-packaging)
+
 ;;; - Autosave
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
-  :init
-  :config
-  (savehist-mode 1)
-  (setq
-   ;; savehist-additional-variables '(kill-ring search-ring regexp-search-ring)
-   savehist-additional-variables '(search-ring regexp-search-ring)))
+  :straight nil
+  :hook ((emacs-startup . savehist-mode))
+  :diminish savehist-mode
+  :custom
+  ;; savehist-additional-variables '(kill-ring search-ring regexp-search-ring)
+  (savehist-additional-variables '(search-ring regexp-search-ring)))
 
 ;;; - Basic editing habit
 (setq-default
@@ -48,7 +54,10 @@
  ;; truncate mark ring after 5000 entries
  mark-ring-max 500)
 
-(save-place-mode t)
+(use-package saveplace
+  :straight nil
+  :hook ((emacs-startup . save-place-mode))
+  :diminish save-place-mode)
 
 ;;; - Encoding
 
@@ -86,10 +95,12 @@
 
 (use-package autorevert
   :straight nil
+  :hook ((emacs-startup . auto-revert-mode))
   :diminish auto-revert-mode)
 
 (use-package abbrev
   :straight nil
+  :hook ((emacs-startup . abbrev-mode))
   :diminish abbrev-mode)
 
 (use-package exec-path-from-shell
@@ -99,4 +110,4 @@
 
 (use-package string-inflection)
 
-(provide 'init-basic-editing)
+(provide 'init-editing)
