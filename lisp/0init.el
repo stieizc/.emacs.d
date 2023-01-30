@@ -18,6 +18,7 @@
 (require 'init-ui)
 (require 'init-fonts)
 (require 'init-knowledge)
+(require 'init-wm)
 
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))

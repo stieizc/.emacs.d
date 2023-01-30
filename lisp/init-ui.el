@@ -69,6 +69,8 @@
 ;; scrollbar
 ;; (set-scroll-bar-mode 'right)
 (scroll-bar-mode -1)
+;; Also shrink fringes to 1 pixel.
+(fringe-mode 1)
 
 ;; default font
 ;; (defvar my-font-attributes '(default nil :family "fixed" :width semi-condensed :height 120))
