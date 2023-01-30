@@ -111,6 +111,11 @@
 (use-package with-editor
   :hook ((emacs-startup . shell-command-with-editor-mode)))
 
+(use-package sudo-edit
+  :general
+  (my:space-file-leader-def
+   "E" '(sudo-edit :which-key "open a file sudo")))
+
 ;; TODO(wenxin): set key bindings
 (use-package string-inflection)
 
