@@ -108,6 +108,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package with-editor
+  :hook ((emacs-startup . shell-command-with-editor-mode)))
+
+;; TODO(wenxin): set key bindings
 (use-package string-inflection)
 
 (provide 'init-editing)
