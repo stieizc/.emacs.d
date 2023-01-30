@@ -118,5 +118,6 @@
 
 ;; TODO(wenxin): set key bindings
 (use-package string-inflection)
+(use-package minimap)
 
 (provide 'init-editing)
