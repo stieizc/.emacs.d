@@ -6,13 +6,16 @@
 
 ;;; - VTerm
 (use-package vterm)
+(use-package multi-vterm)
 
 ;;; - exwm
 (use-package exwm
-  :hook ((emacs-startup . exwm-enable))
+  :hook ((before-init . exwm-enable))
   :config
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
+  (require 'exwm-randr)
+  (exwm-randr-enable)
   (require 'exwm-config)
   ;; All buffers created in EXWM mode are named "*EXWM*". You may want to
   ;; change it in `exwm-update-class-hook' and `exwm-update-title-hook', which
@@ -67,6 +70,8 @@
           ;; search
           ([?\C-s] . [?\C-f])))
   :custom
+  (exwm-workspace-show-all-buffers t)
+  (exwm-layout-show-all-buffers t)
   (exwm-workspace-number 5)
   ;; Global keybindings can be defined with `exwm-input-global-keys'.
   ;; Here are a few examples:
@@ -91,7 +96,8 @@
      (,(kbd "s-d") . (lambda ()
                        (interactive)
                        (start-process "rofi" "*rofi*" "rofi" "-show-icons" "-show" "drun")))
-     (,(kbd "s-<return>") . vterm)
+     (,(kbd "s-<return>") . multi-vterm)
+     (,(kbd "s-q") . kill-current-buffer)
      (,(kbd "s-<tab>") . (lambda ()
                            (interactive)
                            (start-process "rofi" "*rofi*" "rofi" "-show-icons" "-show" "window")))
