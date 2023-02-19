@@ -104,6 +104,9 @@
      ;; Bind "s-<f2>" to "slock", a simple X display locker.
      (,(kbd "s-<f2>") . (lambda ()
                           (interactive)
-                          (start-process "" nil "/usr/bin/slock"))))))
+                          (start-process "" nil "/usr/bin/slock")))))
+  (exwm-manage-configurations
+   '(((member exwm-class-name '("firefox"))
+      char-mode t))))
 
 (provide 'init-wm)
