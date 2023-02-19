@@ -35,6 +35,7 @@
   :states '(normal visual insert emacs)
   :prefix "SPC"
   :non-normal-prefix "M-SPC"
+  :prefix-command 'my:space-leader-command
   :prefix-map 'my:space-leader-map)
 
 (provide 'lib-keybinding)
