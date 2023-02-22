@@ -95,12 +95,14 @@
                   (start-process-shell-command command nil command)))
      (,(kbd "s-d") . (lambda ()
                        (interactive)
-                       (start-process "rofi" "*rofi*" "rofi" "-show-icons" "-show" "drun")))
+                       (let ((process-connection-type nil))  ; use a pipe
+                             (start-process "rofi" nil "rofi" "-show-icons" "-show" "drun"))))
      (,(kbd "s-<return>") . multi-vterm)
      (,(kbd "s-q") . kill-current-buffer)
      (,(kbd "s-<tab>") . (lambda ()
                            (interactive)
-                           (start-process "rofi" "*rofi*" "rofi" "-show-icons" "-show" "window")))
+                           (let ((process-connection-type nil))  ; use a pipe
+                             (start-process "rofi" nil "rofi" "-show-icons" "-show" "window"))))
      ;; Bind "s-<f2>" to "slock", a simple X display locker.
      (,(kbd "s-<f2>") . (lambda ()
                           (interactive)
