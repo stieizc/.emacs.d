@@ -93,7 +93,7 @@
      (,(kbd "s-d") . (lambda ()
                        (interactive)
                        (let ((process-connection-type nil))  ; use a pipe
-                             (start-process "rofi" nil "rofi" "-show-icons" "-show" "drun"))))
+                         (start-process "rofi" nil "rofi" "-show-icons" "-show" "drun"))))
      (,(kbd "s-<return>") . multi-vterm)
      (,(kbd "s-q") . kill-current-buffer)
      (,(kbd "s-<tab>") . (lambda ()
