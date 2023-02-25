@@ -85,6 +85,15 @@
                      (interactive)
                      (exwm-workspace-switch-create ,i))))
                (number-sequence 0 9))
+     ;; Move between windows
+     (,(kbd "s-h") . windmove-left)
+     ([s-left] . windmove-left)
+     (,(kbd "s-l") . windmove-right)
+     ([s-right] . windmove-right)
+     (,(kbd "s-k") . windmove-up)
+     ([s-up] . windmove-up)
+     (,(kbd "s-j") . windmove-down)
+     ([s-down] . windmove-down)
      ;; Bind "s-&" to launch applications ('M-&' also works if the output
      ;; buffer does not bother you).
      ([?\s-&] . (lambda (command)
