@@ -34,10 +34,7 @@
                 (exwm-workspace-rename-buffer exwm-class-name))))
   (add-hook 'exwm-update-title-hook
             (lambda ()
-              (when (or (not exwm-instance-name)
-                        (string-prefix-p "sun-awt-X11-" exwm-instance-name)
-                        (string= "gimp" exwm-instance-name))
-                (exwm-workspace-rename-buffer exwm-title))))
+              (exwm-workspace-rename-buffer exwm-title)))
 
   ;; To add a key binding only available in line-mode, simply define it in
   ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
