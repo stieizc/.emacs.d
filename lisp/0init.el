@@ -23,4 +23,6 @@
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))
 
+(add-hook 'emacs-startup-hook #'server-start)
+
 (provide '0init)
