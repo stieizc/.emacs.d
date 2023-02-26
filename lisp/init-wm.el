@@ -110,7 +110,7 @@
                        (let ((process-connection-type nil))  ; use a pipe
                          (start-process "rofi" nil "rofi" "-show-icons" "-show" "drun"))))
      (,(kbd "s-<return>") . multi-vterm)
-     (,(kbd "s-q") . kill-current-buffer)
+     (,(kbd "s-q") . kill-buffer-and-window)
      (,(kbd "s-<tab>") . (lambda ()
                            (interactive)
                            (let ((process-connection-type nil))  ; use a pipe
