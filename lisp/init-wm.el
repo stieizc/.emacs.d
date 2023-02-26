@@ -17,6 +17,8 @@
   (require 'exwm-randr)
   (exwm-randr-enable)
   (require 'exwm-config)
+  (require 'exwm-xim)
+  (exwm-xim-enable)
   ;; All buffers created in EXWM mode are named "*EXWM*". You may want to
   ;; change it in `exwm-update-class-hook' and `exwm-update-title-hook', which
   ;; are run when a new X window class name or title is available.  Here's
@@ -39,6 +41,8 @@
   ;; To add a key binding only available in line-mode, simply define it in
   ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
   (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+
+  (evil-set-initial-state 'exwm-mode 'insert)
 
   ;; The following example demonstrates how to use simulation keys to mimic
   ;; the behavior of Emacs.  The value of `exwm-input-simulation-keys` is a
@@ -70,6 +74,8 @@
   (exwm-workspace-show-all-buffers t)
   (exwm-layout-show-all-buffers t)
   (exwm-workspace-number 5)
+  (exwm-input-prefix-keys '(?\C-x ?\C-u ?\C-h ?\M-x ?\M-` ?\M-& ?\M-: ?\C-\\))
+
   ;; Global keybindings can be defined with `exwm-input-global-keys'.
   ;; Here are a few examples:
   (exwm-input-global-keys
@@ -113,9 +119,24 @@
      (,(kbd "s-<f2>") . (lambda ()
                           (interactive)
                           (start-process "" nil "/usr/bin/slock")))
+     (,(kbd "s-\\") . toggle-input-method)
      (,(kbd "s-<SPC>") . my:space-leader-command)))
   (exwm-manage-configurations
    '(((member exwm-class-name '("firefox"))
       char-mode t))))
 
+(use-package posframe
+  :demand t)
+
+(use-package pyim
+  :demand t
+  :init
+  :custom
+  (default-input-method "pyim")
+  (pyim-default-scheme 'wubi))
+
+(use-package pyim-wbdict
+  :demand t
+  :config
+  (pyim-wbdict-v86-enable))
 (provide 'init-wm)
