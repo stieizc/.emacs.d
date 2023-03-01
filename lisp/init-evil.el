@@ -54,6 +54,7 @@
   ;; (setq-default
   ;;  evil-auto-indent nil)
   :config
+  (add-to-list 'evil-emacs-state-modes 'exwm-mode)
   (evil-set-undo-system 'undo-tree))
 
 (use-package evil-matchit

@@ -42,8 +42,6 @@
   ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
   (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
 
-  (evil-set-initial-state 'exwm-mode 'insert)
-
   ;; The following example demonstrates how to use simulation keys to mimic
   ;; the behavior of Emacs.  The value of `exwm-input-simulation-keys` is a
   ;; list of cons cells (SRC . DEST), where SRC is the key sequence you press
