@@ -98,6 +98,14 @@
      ([s-up] . windmove-up)
      (,(kbd "s-j") . windmove-down)
      ([s-down] . windmove-down)
+     ;; Swap windows
+     (,(kbd "s-H") . windmove-swap-states-left)
+     (,(kbd "s-J") . windmove-swap-states-down)
+     (,(kbd "s-K") . windmove-swap-states-up)
+     (,(kbd "s-L") . windmove-swap-states-right)
+     ;; Split windows
+     (,(kbd "s-t") . split-window-right)
+     (,(kbd "s-v") . split-window-below)
      ;; Bind "s-&" to launch applications ('M-&' also works if the output
      ;; buffer does not bother you).
      ([?\s-&] . (lambda (command)
@@ -118,6 +126,7 @@
                           (interactive)
                           (start-process "" nil "/usr/bin/slock")))
      (,(kbd "s-\\") . toggle-input-method)
+     (,(kbd "s-x") . execute-extended-command)
      (,(kbd "s-<SPC>") . my:space-leader-command)))
   (exwm-manage-configurations
    '(((member exwm-class-name '("firefox"))
