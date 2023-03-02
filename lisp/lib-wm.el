@@ -25,4 +25,11 @@
     (lambda (action cand)
       (funcall orig-state action (funcall filter action cand)))))
 
+;;;###autoload
+(defun exwm-move-window-to-workspace(workspace-number)
+  (interactive)
+  (let ((frame (exwm-workspace--workspace-from-frame-or-index workspace-number))
+        (id (exwm--buffer->id (window-buffer))))
+    (exwm-workspace-move-window frame id)))
+
 (provide 'lib-wm)

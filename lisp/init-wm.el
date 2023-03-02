@@ -11,6 +11,9 @@
 ;;; - exwm
 (use-package exwm
   :hook ((before-init . exwm-enable))
+  :init
+  (require 'cl-lib)
+  (require 'lib-wm)
   :config
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
@@ -71,7 +74,7 @@
   :custom
   ;; (exwm-workspace-show-all-buffers t)
   ;; (exwm-layout-show-all-buffers t)
-  (exwm-workspace-number 5)
+  (exwm-workspace-number 11)
   (exwm-input-prefix-keys '(?\C-x ?\C-u ?\C-h ?\M-x ?\M-` ?\M-& ?\M-: ?\C-\\))
 
   ;; Global keybindings can be defined with `exwm-input-global-keys'.
@@ -83,12 +86,21 @@
      ;; Bind "s-w" to switch workspace interactively.
      ([?\s-w] . exwm-workspace-switch)
      ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
-     ,@(mapcar (lambda (i)
-                 `(,(kbd (format "s-%d" i)) .
-                   (lambda ()
-                     (interactive)
-                     (exwm-workspace-switch-create ,i))))
-               (number-sequence 0 9))
+     ,@(cl-mapcar (lambda (key idx)
+                    `(,(kbd (format "s-%s" key)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-workspace-switch-create ,idx))))
+                  (append '("`") (number-sequence 1 9) '(0))
+                  (number-sequence 0 10))
+     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
+     ,@(cl-mapcar (lambda (key idx)
+                    `(,(kbd (format "s-%s" key)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-move-window-to-workspace ,idx))))
+                  '("~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")")
+                  (number-sequence 0 10))
      ;; Move between windows
      (,(kbd "s-h") . windmove-left)
      ([s-left] . windmove-left)
@@ -106,6 +118,9 @@
      ;; Split windows
      (,(kbd "s-t") . split-window-right)
      (,(kbd "s-v") . split-window-below)
+     ;; Float & Full screen
+     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
+     (,(kbd "s-F") . exwm-floating-toggle-floating)
      ;; Bind "s-&" to launch applications ('M-&' also works if the output
      ;; buffer does not bother you).
      ([?\s-&] . (lambda (command)
