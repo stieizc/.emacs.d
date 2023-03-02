@@ -69,8 +69,8 @@
           ;; search
           ([?\C-s] . [?\C-f])))
   :custom
-  (exwm-workspace-show-all-buffers t)
-  (exwm-layout-show-all-buffers t)
+  ;; (exwm-workspace-show-all-buffers t)
+  ;; (exwm-layout-show-all-buffers t)
   (exwm-workspace-number 5)
   (exwm-input-prefix-keys '(?\C-x ?\C-u ?\C-h ?\M-x ?\M-` ?\M-& ?\M-: ?\C-\\))
 
@@ -116,7 +116,11 @@
                        (let ((process-connection-type nil))  ; use a pipe
                          (start-process "rofi" nil "rofi" "-show-icons" "-show" "drun"))))
      (,(kbd "s-<return>") . multi-vterm)
-     (,(kbd "s-q") . kill-buffer-and-window)
+     (,(kbd "s-q") . (lambda ()
+                       (interactive)
+                       (if (derived-mode-p 'exwm-mode)
+                           (kill-buffer-and-window)
+                         (delete-window))))
      (,(kbd "s-<tab>") . (lambda ()
                            (interactive)
                            (let ((process-connection-type nil))  ; use a pipe
