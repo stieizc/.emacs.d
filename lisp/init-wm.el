@@ -196,4 +196,7 @@
 (use-package all-the-icons
   :demand t)
 
+(use-package mini-modeline
+  :hook (emacs-startup . mini-modeline-mode))
+
 (provide 'init-wm)
