@@ -29,7 +29,9 @@ image-dired/
 
 ### Elisp ###
 # Compiled
+/eln-cache/
 *.elc
+*.eln
 
 # Packaging
 .cask
