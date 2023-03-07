@@ -5,8 +5,10 @@
 (require 'init-packaging)
 
 ;;; - VTerm
-(use-package vterm)
-(use-package multi-vterm)
+(use-package vterm
+  :straight nil)
+(use-package multi-vterm
+  :straight nil)
 
 ;;; - exwm
 (use-package exwm
