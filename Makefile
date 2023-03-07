@@ -1,7 +1,7 @@
 default: init-packages
 
 rebuild-init:
-	emacs --batch -l early-init.el -l init.el \
+	emacs --batch -l early-init.el \
 		--eval '(straight-rebuild-package "0init")'
 
 init-packages:
