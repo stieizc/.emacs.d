@@ -29,13 +29,13 @@
   :commands diminish)
 
 ;; https://github.com/noctuid/general.el
+(eval-when-compile
+  (setq general-use-package-emit-autoloads nil))
 (use-package general
   :init
   (eval-when-compile
     (require 'general)
-    (require 'lib-keybinding))
-  :custom
-  (general-use-package-emit-autoloads nil))
+    (require 'lib-keybinding)))
 
 ;; If we realy need :bind in use-package calls, we
 ;; need the following blocks
