@@ -227,7 +227,7 @@
   (load-theme 'modus-operandi))
 
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-mode)
+  :hook (emacs-startup . doom-modeline-mode)
   :config
   (setq doom-modeline-enable-word-count t)
   (setq doom-modeline-buffer-encoding nil)
