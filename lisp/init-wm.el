@@ -239,4 +239,17 @@
 ;; (use-package mini-modeline
 ;;   :hook (emacs-startup . mini-modeline-mode))
 
+(use-package desktop-environment
+  :diminish t
+  :hook (emacs-startup . desktop-environment-mode)
+  :general
+  (:keymaps 'desktop-environment-mode-map
+   :no-autoload t
+   "s-l" #'windmove-right)
+  :custom
+  (desktop-environment-brightness-small-increment "2%+")
+  (desktop-environment-brightness-small-decrement "2%-")
+  (desktop-environment-brightness-normal-increment "5%+")
+  (desktop-environment-brightness-normal-decrement "5%-"))
+
 (provide 'init-wm)
