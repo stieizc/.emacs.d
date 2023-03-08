@@ -32,4 +32,9 @@
         (id (exwm--buffer->id (window-buffer))))
     (exwm-workspace-move-window frame id)))
 
+;;;###autoload
+(defun efs/run-in-background (command)
+  (let ((command-parts (split-string command "[ ]+")))
+    (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
+
 (provide 'lib-wm)

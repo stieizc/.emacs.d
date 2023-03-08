@@ -17,13 +17,36 @@
   (require 'cl-lib)
   (require 'lib-wm)
   :config
-  (require 'exwm-systemtray)
-  (exwm-systemtray-enable)
   (require 'exwm-randr)
   (exwm-randr-enable)
   (require 'exwm-config)
   (require 'exwm-xim)
   (exwm-xim-enable)
+
+  ;; Panel
+  (defvar efs/polybar-process nil
+    "Holds the process of the running Polybar instance, if any")
+  (defun efs/kill-panel ()
+    (interactive)
+    (when efs/polybar-process
+      (ignore-errors
+        (kill-process efs/polybar-process)))
+    (setq efs/polybar-process nil))
+  (defun efs/start-panel ()
+    (interactive)
+    (efs/kill-panel)
+    (setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar panel")))
+  (defun efs/send-polybar-hook (module-name hook-index)
+    (start-process-shell-command "polybar-msg" nil (format "polybar-msg hook %s %s" module-name hook-index)))
+  (defun efs/send-polybar-exwm-workspace ()
+    (efs/send-polybar-hook "exwm-workspace" 1))
+  (defun efs/exwm-init-hook ()
+    ;; Start the Polybar panel
+    (efs/start-panel))
+  ;; Update panel indicator when workspace changes
+  (add-hook 'exwm-workspace-switch-hook #'efs/send-polybar-exwm-workspace)
+  (add-hook 'exwm-init-hook #'efs/exwm-init-hook)
+
   ;; All buffers created in EXWM mode are named "*EXWM*". You may want to
   ;; change it in `exwm-update-class-hook' and `exwm-update-title-hook', which
   ;; are run when a new X window class name or title is available.  Here's
