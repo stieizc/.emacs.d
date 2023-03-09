@@ -3,6 +3,9 @@
 ;;; Section: Completion base.
 
 (require 'init-packaging)
+(eval-when-compile
+  (require 'lib-keybinding)
+  (require 'lib-wm))
 
 ;; https://github.com/minad/vertico
 (use-package vertico
@@ -76,9 +79,6 @@
 
   ;; The :init configuration is always executed (Not lazy)
   :init
-  (eval-when-compile
-    (require 'lib-keybinding)
-    (require 'lib-wm))
 
   ;; Optionally configure the register formatting. This improves the register
   ;; preview for `consult-register', `consult-register-load',
