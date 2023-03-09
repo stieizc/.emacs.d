@@ -15,11 +15,21 @@
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+  (with-temp-buffer
+    (insert-file bootstrap-file)
+    (goto-char (point-min))
+    (while (search-forward "https://git.savannah.gnu.org/git/emacs/nongnu.git" nil t)
+      (beginning-of-defun)
+      (kill-sexp))
+    (set-visited-file-name bootstrap-file)
+    (setq load-file-name nil)
+    (eval-buffer)
+    (set-visited-file-name nil)))
+;;(load bootstrap-file nil 'nomessage))
 
 (provide 'init-bootstrap-straight)
