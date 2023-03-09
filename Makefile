@@ -3,6 +3,9 @@ default: init-packages
 rebuild-init:
 	emacs --batch -l early-init.el \
 		--eval '(straight-rebuild-package "0init")'
+rebuild-all:
+	emacs --batch -l early-init.el \
+		--eval '(straight-rebuild-all)'
 
 init-packages:
 	emacs -Q --batch -l init.el \
