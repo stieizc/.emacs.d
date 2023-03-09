@@ -7,7 +7,12 @@
 ;;; - VTerm
 (use-package vterm
   :straight nil
-  :commands (vterm-mode))
+  :commands (vterm-mode)
+  :config
+  (add-hook
+   'vterm-mode-hook
+   (lambda ()
+     (setq show-trailing-whitespace nil))))
 
 (use-package multi-vterm
   :straight nil
