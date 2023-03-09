@@ -151,9 +151,9 @@
      (,(kbd "s-F") . exwm-floating-toggle-floating)
      ;; Bind "s-&" to launch applications ('M-&' also works if the output
      ;; buffer does not bother you).
-     ([?\s-&] . (lambda (command)
-                  (interactive (list (read-shell-command "$ ")))
-                  (start-process-shell-command command nil command)))
+     ;; ([?\s-&] . (lambda (command)
+     ;;              (interactive (list (read-shell-command "$ ")))
+     ;;              (start-process-shell-command command nil command)))
      (,(kbd "s-d") . (lambda ()
                        (interactive)
                        (let ((process-connection-type nil))  ; use a pipe
