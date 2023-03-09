@@ -26,8 +26,7 @@
       (funcall orig-state action (funcall filter action cand)))))
 
 ;;;###autoload
-(defun exwm-move-window-to-workspace(workspace-number)
-  (interactive)
+(defun exwm-move-window-to-workspace (workspace-number)
   (let ((frame (exwm-workspace--workspace-from-frame-or-index workspace-number))
         (id (exwm--buffer->id (window-buffer))))
     (exwm-workspace-move-window frame id)))
