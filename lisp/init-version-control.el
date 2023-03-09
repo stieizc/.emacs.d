@@ -2,7 +2,7 @@
 
 ;;; Section: Version control.
 
-(require 'init-bootstrap-straight)
+(require 'init-packaging)
 
 ;;; Section: Version control.
 

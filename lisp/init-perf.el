@@ -2,7 +2,7 @@
 
 ;;; Section: Debug utilities.
 
-(require 'init-bootstrap-straight)
+(require 'init-packaging)
 
 (setq
  ;; update ui less often
