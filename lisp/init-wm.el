@@ -6,9 +6,12 @@
 
 ;;; - VTerm
 (use-package vterm
-  :straight nil)
+  :straight nil
+  :commands (vterm-mode))
+
 (use-package multi-vterm
-  :straight nil)
+  :straight nil
+  :commands (multi-vterm))
 
 ;;; - exwm
 (use-package exwm

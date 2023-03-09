@@ -104,6 +104,7 @@
   :diminish abbrev-mode)
 
 (use-package exec-path-from-shell
+  :defer t
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
@@ -112,12 +113,16 @@
   :hook ((emacs-startup . shell-command-with-editor-mode)))
 
 (use-package sudo-edit
+  :defer t
   :general
   (my:space-file-leader-def
    "E" '(sudo-edit :which-key "open a file sudo")))
 
 ;; TODO(wenxin): set key bindings
-(use-package string-inflection)
-(use-package minimap)
+(use-package string-inflection
+  :defer t)
+
+(use-package minimap
+  :defer t)
 
 (provide 'init-editing)

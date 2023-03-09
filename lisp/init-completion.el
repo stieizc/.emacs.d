@@ -188,6 +188,7 @@
 
 ;; https://github.com/oantolin/embark
 (use-package embark
+  :defer t
   :general
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.

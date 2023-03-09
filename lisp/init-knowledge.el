@@ -7,6 +7,7 @@
 
 (use-package org
   :straight '(org :type built-in)
+  :defer t
   :init
   (setq
    ;; Without this org mode will add indentation
@@ -16,6 +17,7 @@
   :config
   (require 'org-tempo))
 
-(use-package org-roam)
+(use-package org-roam
+  :defer t)
 
 (provide 'init-knowledge)

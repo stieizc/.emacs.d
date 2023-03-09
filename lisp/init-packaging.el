@@ -33,6 +33,7 @@
 ;;(use-package bind-key)
 
 ;; https://github.com/radian-software/el-patch
-(use-package el-patch)
+(use-package el-patch
+  :defer t)
 
 (provide 'init-packaging)
