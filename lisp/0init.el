@@ -16,6 +16,9 @@
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))
 
+;; Start emacs server early
+(server-start)
+
 (require 'init-evil)
 (require 'init-completion)
 (require 'init-version-control)
@@ -25,7 +28,5 @@
 (require 'init-fonts)
 (require 'init-knowledge)
 (require 'init-wm)
-
-(add-hook 'emacs-startup-hook #'server-start)
 
 (provide '0init)
