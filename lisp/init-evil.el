@@ -14,14 +14,6 @@
   (setq undo-tree-auto-save-history t)
   :diminish undo-tree-mode)
 
-;; https://github.com/emacs-evil/evil-collection
-(use-package evil-collection
-  :hook ((emacs-startup . evil-collection-init))
-  :config
-  (evil-collection-define-key 'normal 'Info-mode-map
-			      "h" #'evil-backward-char
-			      "l" #'evil-forward-char))
-
 ;; https://github.com/emacs-evil/evil
 ;; https://github.com/noctuid/evil-guide
 (use-package evil
@@ -56,6 +48,16 @@
   :config
   (add-to-list 'evil-emacs-state-modes 'exwm-mode)
   (evil-set-undo-system 'undo-tree))
+
+;; https://github.com/emacs-evil/evil-collection
+(use-package evil-collection
+  ;;:hook ((emacs-startup . evil-collection-init))
+  :after (evil)
+  :config
+  (evil-collection-init)
+  (evil-collection-define-key 'normal 'Info-mode-map
+			      "h" #'evil-backward-char
+			      "l" #'evil-forward-char))
 
 (use-package evil-matchit
   :hook ((emacs-startup . global-evil-matchit-mode)))

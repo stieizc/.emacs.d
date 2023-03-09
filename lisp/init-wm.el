@@ -177,23 +177,19 @@
    '(((member exwm-class-name '("firefox"))
       char-mode t))))
 
-(use-package posframe
-  :demand t)
+(use-package posframe)
 
 (use-package pyim
-  :demand t
   :init
   :custom
   (default-input-method "pyim")
   (pyim-default-scheme 'wubi))
 
 (use-package pyim-wbdict
-  :demand t
   :config
   (pyim-wbdict-v86-enable))
 
 ;; (use-package doom-themes
-;;   :demand t
 ;;   :config
 ;;   ;; Global settings (defaults)
 ;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -213,7 +209,6 @@
 ;; Doom emacs themes has problem showing gray fonts.
 ;; Try high-contrast themes.
 (use-package modus-themes
-  :demand t
   :config
   ;; Add all your customizations prior to loading the themes
   (setq modus-themes-italic-constructs t
@@ -233,8 +228,7 @@
   (setq doom-modeline-buffer-encoding nil)
   (setq doom-modeline-github t))
 
-(use-package all-the-icons
-  :demand t)
+(use-package all-the-icons)
 
 ;; (use-package mini-modeline
 ;;   :hook (emacs-startup . mini-modeline-mode))

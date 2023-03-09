@@ -178,7 +178,6 @@
 ;; https://github.com/oantolin/orderless
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  :demand t
   :custom
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
