@@ -15,14 +15,12 @@
             (lambda () (setq gc-cons-threshold
                              normal-gc-cons-threshold))))
 
+;; Start-up setup.
 (setq
  package-enable-at-startup nil
  inhibit-startup-message t
  ;; prefer newer .el instead of the .elc
  load-prefer-newer t)
-(add-to-list 'default-frame-alist '(tool-bar-lines . 0))
-(add-to-list 'default-frame-alist '(menu-bar-lines . 0))
-;; (add-to-list 'default-frame-alist '(vertical-scroll-bars))
 
 ;;; Section: Acknowledgement.
 ;; Lots of code and ideas are borrowed from
