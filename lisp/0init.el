@@ -9,13 +9,13 @@
 ;; TODO: benchmark init.
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-benchmarking.el
 (require 'init-packaging)
+(require 'init-perf)
 
 ;; Load custom file first to avoid confirming safely-marked "unsafe" blocks
 ;; during emacs startup
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))
 
-(require 'init-perf)
 (require 'init-evil)
 (require 'init-completion)
 (require 'init-version-control)
