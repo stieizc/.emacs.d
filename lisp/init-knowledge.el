@@ -6,6 +6,7 @@
 (require 'init-packaging)
 
 (use-package org
+  :straight '(org :type built-in)
   :init
   (setq
    ;; Without this org mode will add indentation
