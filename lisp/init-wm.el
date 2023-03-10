@@ -6,7 +6,7 @@
 
 ;;; - VTerm
 (use-package vterm
-  :straight nil
+  :straight '(vterm :type built-in)
   :commands (vterm-mode)
   :config
   (add-hook
@@ -15,7 +15,6 @@
      (setq show-trailing-whitespace nil))))
 
 (use-package multi-vterm
-  :straight nil
   :commands (multi-vterm))
 
 ;;; - exwm
