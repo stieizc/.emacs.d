@@ -4,6 +4,8 @@
 ;; Evil, that is.
 
 (require 'init-packaging)
+(eval-when-compile
+  (require 'lib-keybinding))
 
 ;; Required by evil as a undo system. Useful anyways.
 ;; https://www.emacswiki.org/emacs/UndoTree
@@ -18,7 +20,7 @@
 ;; https://github.com/noctuid/evil-guide
 (use-package evil
   :hook ((emacs-startup . evil-mode))
-  :general
+  :config
   (my:space-file-leader-def
    "f" '(find-file :which-key "open a file"))
   (my:space-exit-leader-def
