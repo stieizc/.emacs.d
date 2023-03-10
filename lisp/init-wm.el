@@ -191,7 +191,9 @@
   :init
   :custom
   (default-input-method "pyim")
-  (pyim-default-scheme 'wubi))
+  (pyim-default-scheme 'wubi)
+  (pyim-dicts
+   `((:name "my-wubi" :file ,(expand-file-name "etc/my-wubi.pyim" user-emacs-directory)))))
 
 (use-package pyim-wbdict
   :config
