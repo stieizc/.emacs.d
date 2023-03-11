@@ -37,6 +37,7 @@
    "b" '(my:space-buffer-leader-command :which-key "buffer commands")
    "f" '(my:space-file-leader-command :which-key "file commands")
    "g" '(my:space-vc-leader-command :which-key "version control commands")
+   "h" '(:keymap help-map :which-key "help")
    "q" '(my:space-exit-leader-command :which-key "exit commands")
    "z" '(my:space-zmisc-leader-command :which-key "zmisc commands"))
   :custom
