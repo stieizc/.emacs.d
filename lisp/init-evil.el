@@ -22,24 +22,24 @@
   :hook ((emacs-startup . evil-mode))
   :config
   (my:space-file-leader-def
-   "f" '(find-file :which-key "open a file"))
+    "f" '(find-file :which-key "open a file"))
   (my:space-exit-leader-def
-   "q" '(save-buffers-kill-terminal :which-key "kill current window"))
+    "q" '(save-buffers-kill-terminal :which-key "kill current window"))
   (my:space-zmisc-leader-def
-   "d" #'toggle-debug-on-error
-   "-" #'text-scale-adjust
-   "=" #'text-scale-adjust
-   "+" #'text-scale-adjust
-   "0" #'text-scale-adjust)
+    "d" #'toggle-debug-on-error
+    "-" #'text-scale-adjust
+    "=" #'text-scale-adjust
+    "+" #'text-scale-adjust
+    "0" #'text-scale-adjust)
   (my:space-leader-def
-   "TAB" '(switch-to-other-buffer :which-key "prev buffer")
-   "SPC" '(save-buffer :which-key "save buffer")
-   "b" '(my:space-buffer-leader-command :which-key "buffer commands")
-   "f" '(my:space-file-leader-command :which-key "file commands")
-   "g" '(my:space-vc-leader-command :which-key "version control commands")
-   "h" '(:keymap help-map :which-key "help")
-   "q" '(my:space-exit-leader-command :which-key "exit commands")
-   "z" '(my:space-zmisc-leader-command :which-key "zmisc commands"))
+    "TAB" '(switch-to-other-buffer :which-key "prev buffer")
+    "SPC" '(save-buffer :which-key "save buffer")
+    "b" '(my:space-buffer-leader-command :which-key "buffer commands")
+    "f" '(my:space-file-leader-command :which-key "file commands")
+    "g" '(my:space-vc-leader-command :which-key "version control commands")
+    "h" '(:keymap help-map :which-key "help")
+    "q" '(my:space-exit-leader-command :which-key "exit commands")
+    "z" '(my:space-zmisc-leader-command :which-key "zmisc commands"))
   :custom
   ;; For evil-collection.
   (evil-want-integration t)
@@ -59,8 +59,8 @@
   :config
   (evil-collection-init)
   (evil-collection-define-key 'normal 'Info-mode-map
-			      "h" #'evil-backward-char
-			      "l" #'evil-forward-char))
+    "h" #'evil-backward-char
+    "l" #'evil-forward-char))
 
 (use-package evil-matchit
   :hook ((emacs-startup . global-evil-matchit-mode)))
