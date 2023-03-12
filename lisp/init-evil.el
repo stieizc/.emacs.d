@@ -69,6 +69,6 @@
   :hook ((emacs-startup . which-key-mode)))
 
 (use-package hydra
-  :defer)
+  :defer t)
 
 (provide 'init-evil)
