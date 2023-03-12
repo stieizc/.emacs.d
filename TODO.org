@@ -1,4 +1,14 @@
-* org-roam
+* Quirks
+
+- pyim no input in vterm-mode
+  - Has input with read-only-mode turned off, but hangs emacs after confirming selection
+- evil SPC leader has which-key help messages, but s-SPC doesn't.
+  - subcommands also doesn't have help messages.
+  - SPC leader's quirky behavior remains the same with/without byte-compiling init configs.
+
+* Notes
+
+- org-roam
 
 https://zzamboni.org/post/beautifying-org-mode-in-emacs/
 
@@ -62,7 +72,3 @@ https://github.com/minad/vertico
 * Scratches
 
 - [X] deft
-
-* Notes
-
-- org-roam
