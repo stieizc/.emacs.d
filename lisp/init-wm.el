@@ -73,41 +73,30 @@
             (lambda ()
               (exwm-workspace-rename-buffer exwm-title)))
 
+  ;; Clear exwm-mode-map
+  (setq exwm-mode-map (make-sparse-keymap))
+
   ;; To add a key binding only available in line-mode, simply define it in
   ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
-  (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+  ;; (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
 
   ;; The following example demonstrates how to use simulation keys to mimic
   ;; the behavior of Emacs.  The value of `exwm-input-simulation-keys` is a
   ;; list of cons cells (SRC . DEST), where SRC is the key sequence you press
   ;; and DEST is what EXWM actually sends to application.  Note that both SRC
   ;; and DEST should be key sequences (vector or string).
-  (setq exwm-input-simulation-keys
-        '(
-          ;; movement
-          ([?\C-b] . [left])
-          ([?\M-b] . [C-left])
-          ([?\C-f] . [right])
-          ([?\M-f] . [C-right])
-          ([?\C-p] . [up])
-          ([?\C-n] . [down])
-          ([?\C-a] . [home])
-          ([?\C-e] . [end])
-          ([?\M-v] . [prior])
-          ([?\C-v] . [next])
-          ([?\C-d] . [delete])
-          ([?\C-k] . [S-end delete])
-          ;; cut/paste.
-          ([?\C-w] . [?\C-x])
-          ([?\M-w] . [?\C-c])
-          ([?\C-y] . [?\C-v])
-          ;; search
-          ([?\C-s] . [?\C-f])))
+  (setq exwm-input-simulation-keys '())
   :custom
   ;; (exwm-workspace-show-all-buffers t)
   ;; (exwm-layout-show-all-buffers t)
   (exwm-workspace-number 11)
-  (exwm-input-prefix-keys '(?\C-x ?\C-u ?\C-h ?\M-x ?\M-` ?\M-& ?\M-: ?\C-\\))
+  ;; I don't want any prefix keys in line-mode for now
+  (exwm-input-prefix-keys '())
+
+  ;; Config for specific applications
+  (exwm-manage-configurations
+   '(((member exwm-class-name '("firefox"))
+      line-mode t)))
 
   ;; Global keybindings can be defined with `exwm-input-global-keys'.
   ;; Here are a few examples:
@@ -179,10 +168,7 @@
                           (start-process "" nil "/usr/bin/slock")))
      (,(kbd "s-\\") . toggle-input-method)
      (,(kbd "s-x") . execute-extended-command)
-     (,(kbd "s-<SPC>") . my:space-leader-command)))
-  (exwm-manage-configurations
-   '(((member exwm-class-name '("firefox"))
-      char-mode t))))
+     (,(kbd "s-<SPC>") . my:space-leader-command))))
 
 (use-package posframe)
 
