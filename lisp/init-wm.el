@@ -3,6 +3,8 @@
 ;;; Section: Windows Management.
 
 (require 'init-packaging)
+(eval-when-compile
+  (require 'lib-keybinding))
 
 ;;; - VTerm
 (use-package vterm
@@ -16,6 +18,11 @@
 
 (use-package multi-vterm
   :commands (multi-vterm))
+
+(use-package perspective-exwm
+  :after (perspective)
+  :defer t
+  :commands (perspective-exwm-mode))
 
 ;;; - exwm
 (use-package exwm
@@ -86,6 +93,11 @@
   ;; and DEST is what EXWM actually sends to application.  Note that both SRC
   ;; and DEST should be key sequences (vector or string).
   (setq exwm-input-simulation-keys '())
+
+  (eval-when-compile
+    (require 'perspective))
+  (persp-mode t)
+  (perspective-exwm-mode t)
   :custom
   ;; (exwm-workspace-show-all-buffers t)
   ;; (exwm-layout-show-all-buffers t)

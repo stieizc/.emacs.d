@@ -18,6 +18,7 @@
 
 ;; https://github.com/minad/consult
 (use-package consult
+  :commands (consult-customize)
   ;; Replace bindings. Lazily loaded due by `use-package'.
   :general
   (my:space-buffer-leader-def
