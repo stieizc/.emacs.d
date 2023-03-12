@@ -241,4 +241,7 @@
   (desktop-environment-brightness-normal-increment "5%+")
   (desktop-environment-brightness-normal-decrement "5%-"))
 
+(use-package ranger
+  :hook (emacs-startup . ranger-override-dired-mode))
+
 (provide 'init-wm)
