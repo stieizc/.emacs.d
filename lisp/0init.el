@@ -28,5 +28,6 @@
 (require 'init-fonts)
 (require 'init-knowledge)
 (require 'init-wm)
+(require 'init-proglang)
 
 (provide '0init)
