@@ -245,7 +245,6 @@
   :hook (emacs-startup . desktop-environment-mode)
   :general
   (:keymaps 'desktop-environment-mode-map
-   :no-autoload t
    "s-l" #'windmove-right)
   :custom
   (desktop-environment-brightness-small-increment "2%+")

@@ -65,9 +65,6 @@
 (use-package evil-matchit
   :hook ((emacs-startup . global-evil-matchit-mode)))
 
-(use-package which-key
-  :hook ((emacs-startup . which-key-mode)))
-
 (use-package hydra
   :defer t)
 
