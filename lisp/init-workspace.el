@@ -5,6 +5,8 @@
 (require 'init-packaging)
 (require 'config-path)
 (eval-when-compile
+  (require 'consult))
+(eval-when-compile
   (require 'lib-keybinding))
 
 (setq
@@ -26,8 +28,6 @@
   (my:space-leader-def
     "x" '(:keymap perspective-map :which-key "perspectives" :package perspective))
 
-  (eval-when-compile
-    (require 'consult))
   (consult-customize consult--source-buffer :hidden t :default nil)
   (add-to-list 'consult-buffer-sources persp-consult-source))
 
