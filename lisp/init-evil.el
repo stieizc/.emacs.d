@@ -48,6 +48,8 @@
   (evil-disable-insert-state-bindings t)
   ;; (setq-default
   ;;  evil-auto-indent nil)
+  ;; For jumping
+  (evil-symbol-word-search t)
   :config
   (add-to-list 'evil-emacs-state-modes 'exwm-mode)
   (evil-set-undo-system 'undo-tree))
