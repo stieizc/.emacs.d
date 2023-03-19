@@ -14,6 +14,7 @@
   (add-hook
    'vterm-mode-hook
    (lambda ()
+     (setq display-line-numbers nil)
      (setq show-trailing-whitespace nil))))
 
 (use-package multi-vterm
