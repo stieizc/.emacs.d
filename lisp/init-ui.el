@@ -47,14 +47,14 @@
  ;; this is the default
  display-line-numbers-current-absolute t)
 
-(defun my:line-numbers-relative ()
-  (setq-local display-line-numbers 'visual))
-
-(defun my:line-numbers-absolute ()
-  (setq-local display-line-numbers t))
-
-(add-hook 'evil-insert-state-entry-hook #'my:line-numbers-relative)
-(add-hook 'evil-insert-state-exit-hook #'my:line-numbers-absolute)
+;;(defun my:line-numbers-relative ()
+;;  (setq-local display-line-numbers 'visual))
+;;
+;;(defun my:line-numbers-absolute ()
+;;  (setq-local display-line-numbers t))
+;;
+;;(add-hook 'evil-insert-state-entry-hook #'my:line-numbers-relative)
+;;(add-hook 'evil-insert-state-exit-hook #'my:line-numbers-absolute)
 
 (setq-default
  show-trailing-whitespace t)
