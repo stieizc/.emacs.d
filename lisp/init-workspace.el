@@ -25,6 +25,7 @@
                 ;; (persp-state-load persp-state-default-file)
                 ))
   :config
+  (require 'consult)
   (my:space-leader-def
     "x" '(:keymap perspective-map :which-key "perspectives" :package perspective))
 
