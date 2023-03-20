@@ -4,6 +4,8 @@
 
 (require 'init-packaging)
 (eval-when-compile
+  (require 'perspective))
+(eval-when-compile
   (require 'lib-keybinding))
 
 ;;; - VTerm
@@ -55,12 +57,16 @@
     (start-process-shell-command "polybar-msg" nil (format "polybar-msg hook %s %s" module-name hook-index)))
   (defun efs/send-polybar-exwm-workspace ()
     (efs/send-polybar-hook "exwm-workspace" 1))
-  (defun efs/exwm-init-hook ()
+  (defun my-wm:exwm-init-hook ()
+    ;; Reload perspectives
+    (persp-mode t)
+    (perspective-exwm-mode t)
+    (persp-state-load persp-state-default-file)
     ;; Start the Polybar panel
     (efs/start-panel))
   ;; Update panel indicator when workspace changes
   (add-hook 'exwm-workspace-switch-hook #'efs/send-polybar-exwm-workspace)
-  (add-hook 'exwm-init-hook #'efs/exwm-init-hook)
+  (add-hook 'exwm-init-hook #'my-wm:exwm-init-hook)
 
   ;; All buffers created in EXWM mode are named "*EXWM*". You may want to
   ;; change it in `exwm-update-class-hook' and `exwm-update-title-hook', which
@@ -94,15 +100,10 @@
   ;; and DEST is what EXWM actually sends to application.  Note that both SRC
   ;; and DEST should be key sequences (vector or string).
   (setq exwm-input-simulation-keys '())
-
-  (eval-when-compile
-    (require 'perspective))
-  (persp-mode t)
-  (perspective-exwm-mode t)
   :custom
   ;; (exwm-workspace-show-all-buffers t)
   ;; (exwm-layout-show-all-buffers t)
-  (exwm-workspace-number 11)
+  (exwm-workspace-number 1)
   ;; I don't want any prefix keys in line-mode for now
   (exwm-input-prefix-keys '())
 
@@ -119,22 +120,22 @@
      ([?\s-r] . exwm-reset)
      ;; Bind "s-w" to switch workspace interactively.
      ([?\s-w] . exwm-workspace-switch)
-     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
-     ,@(cl-mapcar (lambda (key idx)
-                    `(,(kbd (format "s-%s" key)) .
-                      (lambda ()
-                        (interactive)
-                        (exwm-workspace-switch-create ,idx))))
-                  (append '("`") (number-sequence 1 9) '(0))
-                  (number-sequence 0 10))
-     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
-     ,@(cl-mapcar (lambda (key idx)
-                    `(,(kbd (format "s-%s" key)) .
-                      (lambda ()
-                        (interactive)
-                        (exwm-move-window-to-workspace ,idx))))
-                  '("~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")")
-                  (number-sequence 0 10))
+     ;;;; Bind "s-0" to "s-9" to switch to a workspace by its index.
+     ;;,@(cl-mapcar (lambda (key idx)
+     ;;               `(,(kbd (format "s-%s" key)) .
+     ;;                 (lambda ()
+     ;;                   (interactive)
+     ;;                   (exwm-workspace-switch-create ,idx))))
+     ;;             (append '("`") (number-sequence 1 9) '(0))
+     ;;             (number-sequence 0 10))
+     ;;;; Bind "s-0" to "s-9" to switch to a workspace by its index.
+     ;;,@(cl-mapcar (lambda (key idx)
+     ;;               `(,(kbd (format "s-%s" key)) .
+     ;;                 (lambda ()
+     ;;                   (interactive)
+     ;;                   (exwm-move-window-to-workspace ,idx))))
+     ;;             '("~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")")
+     ;;             (number-sequence 0 10))
      ;; Move between windows
      (,(kbd "s-h") . windmove-left)
      ([s-left] . windmove-left)
