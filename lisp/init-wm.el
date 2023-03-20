@@ -193,6 +193,10 @@
   (pyim-dicts
    `((:name "my-wubi" :file ,(expand-file-name "etc/my-wubi.pyim" user-emacs-directory)))))
 
+(use-package pyim-basedict
+  :config
+  (pyim-basedict-enable))
+
 (use-package pyim-wbdict
   :config
   (pyim-wbdict-v86-enable))
