@@ -101,9 +101,10 @@
   ;; and DEST should be key sequences (vector or string).
   (setq exwm-input-simulation-keys '())
   :custom
-  ;; (exwm-workspace-show-all-buffers t)
-  ;; (exwm-layout-show-all-buffers t)
+  (exwm-workspace-show-all-buffers t)
+  (exwm-layout-show-all-buffers t)
   (exwm-workspace-number 1)
+  ;; (exwm-workspace-minibuffer-position 'bottom)
   ;; I don't want any prefix keys in line-mode for now
   (exwm-input-prefix-keys '())
 
@@ -260,5 +261,7 @@
 
 (use-package ranger
   :hook (emacs-startup . ranger-override-dired-mode))
+
+;; (use-package mini-frame)
 
 (provide 'init-wm)
