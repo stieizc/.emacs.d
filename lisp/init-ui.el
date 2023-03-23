@@ -22,6 +22,16 @@
   :hook (prog-mode . rainbow-delimiters-mode)
   :diminish rainbow-delimiters-mode)
 
+(use-package highlight-parentheses
+  :hook (prog-mode . highlight-parentheses-mode)
+  :diminish highlight-parentheses-mode
+  :custom
+  (highlight-parentheses-colors nil)
+  (highlight-parentheses-background-colors
+   '("sky blue" "lemon chiffon" "LightPink1" "gray90"))
+  :config
+  (add-hook 'minibuffer-setup-hook #'highlight-parentheses-minibuffer-setup))
+
 ;;; - Window management
 (setq
  ;; less likely to split vertically
