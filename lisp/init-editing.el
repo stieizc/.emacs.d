@@ -113,7 +113,6 @@
   :hook ((emacs-startup . shell-command-with-editor-mode)))
 
 (use-package sudo-edit
-  :defer t
   :general
   (my:space-file-leader-def
    "E" '(sudo-edit :which-key "open a file sudo")))
