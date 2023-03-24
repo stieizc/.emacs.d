@@ -181,7 +181,7 @@
      (,(kbd "s-<f2>") . (lambda ()
                           (interactive)
                           (start-process "" nil "/usr/bin/slock")))
-     (,(kbd "s-\\") . toggle-input-method)
+     (,(kbd "C-<SPC>") . toggle-input-method)
      (,(kbd "s-x") . execute-extended-command)
      (,(kbd "s-<SPC>") . my:space-leader-command))))
 
@@ -262,6 +262,7 @@
 (use-package ranger
   :hook (emacs-startup . ranger-override-dired-mode))
 
-;; (use-package mini-frame)
+;; (use-package mini-frame
+;;   :hook (emacs-startup . mini-frame-mode))
 
 (provide 'init-wm)
