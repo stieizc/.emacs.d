@@ -61,9 +61,10 @@
     ;; Reload perspectives
     (persp-mode t)
     (perspective-exwm-mode t)
-    (persp-state-load persp-state-default-file)
+    ;; (persp-state-load persp-state-default-file)
     ;; Start the Polybar panel
-    (efs/start-panel))
+    ;; (efs/start-panel)
+    )
   ;; Update panel indicator when workspace changes
   (add-hook 'exwm-workspace-switch-hook #'efs/send-polybar-exwm-workspace)
   (add-hook 'exwm-init-hook #'my-wm:exwm-init-hook)
