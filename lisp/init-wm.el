@@ -22,10 +22,10 @@
 (use-package multi-vterm
   :commands (multi-vterm))
 
-(use-package perspective-exwm
-  :after (perspective)
-  :defer t
-  :commands (perspective-exwm-mode))
+;; (use-package perspective-exwm
+;;   :after (perspective)
+;;   :defer t
+;;   :commands (perspective-exwm-mode))
 
 ;;; - exwm
 (use-package exwm
@@ -59,11 +59,11 @@
     (efs/send-polybar-hook "exwm-workspace" 1))
   (defun my-wm:exwm-init-hook ()
     ;; Reload perspectives
-    (persp-mode t)
-    (perspective-exwm-mode t)
-    ;; (persp-state-load persp-state-default-file)
+    ;;(persp-mode t)
+    ;;(perspective-exwm-mode t)
+    ;;(persp-state-load persp-state-default-file)
     ;; Start the Polybar panel
-    ;; (efs/start-panel)
+    ;;(efs/start-panel)
     )
   ;; Update panel indicator when workspace changes
   (add-hook 'exwm-workspace-switch-hook #'efs/send-polybar-exwm-workspace)
